@@ -13,6 +13,6 @@ class SpellController extends Controller
     public function index()
     {
         $spells = Spell::all();
-        return response()->json($spells);
+        return view('spells', ['spells' => $spells]);
     }
 }
