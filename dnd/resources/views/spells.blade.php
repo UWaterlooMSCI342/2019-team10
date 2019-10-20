@@ -3,13 +3,15 @@
 @section('title', 'Page Title')
 
 @section('content')
-<ol>
-    @foreach ($spells as $spell)
-        <li>
-            @foreach ($attr_to_display as $attr)
-                <p><strong>{{$attr}}:</strong> {{ $spell->$attr }}</p>
-            @endforeach
-        </li>
-    @endforeach
-</ol>
+
+<table style = "width:100%">
+<tr>
+    <th>Level</th>
+    <th>Name</th>
+    <th>Class</th>
+    <th>Component</th>
+    <th>School</th>
+</tr>
+
+
 @endsection
