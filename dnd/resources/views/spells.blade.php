@@ -3,9 +3,14 @@
 @section('title', 'Page Title')
 
 @section('content')
-<ul>
-    @foreach ($spells as $spell)
-        <li>{{ $spell -> name }}</li>
-    @endforeach
-</ul>
+<table style = "width:100%">
+<tr>
+    <th>Level</th>
+    <th>Name</th>
+    <th>Class</th>
+    <th>Component</th>
+    <th>School</th>
+</tr>
+
+
 @endsection
