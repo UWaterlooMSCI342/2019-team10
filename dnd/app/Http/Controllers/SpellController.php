@@ -15,4 +15,9 @@ class SpellController extends Controller
         $spells = Spell::all();
         return view('spells', ['spells' => $spells]);
     }
+	public function addNewSpells()
+    {
+		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];
+        return view('addNewSpells',['classes' => $classes]);
+    }
 }
