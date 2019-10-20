@@ -33,7 +33,8 @@ class SpellController extends Controller
 
     public function index()
     {
-        $spells = $this->getSpellsFromCsv("C:/wamp64/www/2019-team10/dnd/resources/csv/spell_csv.csv");
+        $csv_path = __DIR__.'\..\..\..\resources\csv\spell_csv.csv';
+        $spells = $this->getSpellsFromCsv($csv_path);
         return view('spells', ['spells' => $spells, 'attr_to_display' => ["name", "level", "school", "classes"]]);
     }
 }
