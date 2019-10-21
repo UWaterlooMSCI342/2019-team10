@@ -16,7 +16,7 @@ body {
         background-repeat:no-repeat;
        background-size:cover;
 } 
-.transparentbox{
+.whitefont{
  color: #fff;
 }
 </style>
@@ -31,20 +31,24 @@ body {
 </div>
 </div>
 
-<div class = transparentbox>
+<div class = whitefont>
 
 <form>
 	
   <div class="form-group row">
-    <div class="col-sm-10">
+  
+  <div class="col-sm-10">
 	<label> <b>Spell Name:</b> </label>
-      <input type="spellname" class="form-control" id="spellname" placeholder="Spell Name">
-    </div>
-	    <div class="col-sm-10">
-	<label> <b>Level:</b> </label>
-      <input type="spellname" class="form-control" id="level" placeholder="Level">
+      <input type="spellname" class="form-control" id="level" placeholder="Spell Name">
     </div>
 	</div>
+	<div class="form-group row">
+	    <div class="col-sm-10">
+	<label> <b>Level:</b> </label>
+      <input type="level" class="form-control" id="level" placeholder="Level">
+    </div>
+	</div>
+	
 	  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Type:</b> </label>
