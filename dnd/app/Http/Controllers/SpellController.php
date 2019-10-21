@@ -13,9 +13,13 @@ class SpellController extends Controller
      * @return void
      */
 
+
+    function file_build_path(...$segments) {
+        return join(DIRECTORY_SEPARATOR, $segments);
+    }
+    
     private function getSpellsFromCsv($csv_path) {
-        $csv_dir_path = env("APP_CSV_DIR", __DIR__);
-        $reader = Reader::createFromPath($csv_dir_path.$csv_path, 'r');
+        $reader = Reader::createFromPath($csv_path, 'r');
         $keys = ["name", "level", "school", "ritual",
          "casting_time", "range",	"duration","concentration",
          "components", "materials", "description_length",
@@ -34,7 +38,8 @@ class SpellController extends Controller
 
     public function index()
     {
-        $spells = $this->getSpellsFromCsv("spell_csv.csv");
+        $base=__DIR__.DIRECTORY_SEPARATOR;
+        $spells = $this->getSpellsFromCsv($base.$this->file_build_path("..","..","..", "resources", "csv", "spell_csv.csv"));
         return view('spells', ['spells' => $spells, 'attr_to_display' => ["name", "level", "school", "classes"]]);
     }
 }
