@@ -3,9 +3,13 @@
 @section('title', 'Page Title')
 
 @section('content')
-<ul>
+<ol>
     @foreach ($spells as $spell)
-        <li>{{ $spell -> name }}</li>
+        <li>
+            @foreach ($attr_to_display as $attr)
+                <p><strong>{{$attr}}:</strong> {{ $spell->$attr }}</p>
+            @endforeach
+        </li>
     @endforeach
-</ul>
+</ol>
 @endsection

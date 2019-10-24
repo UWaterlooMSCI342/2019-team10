@@ -7,4 +7,5 @@ use App\DndModel;
 
 class Spell extends DndModel
 {
+    protected $table = "spells";
 }
