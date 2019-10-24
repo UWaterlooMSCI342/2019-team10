@@ -23,7 +23,7 @@ class SpellController extends Controller
         $keys = ["name", "level", "school", "ritual",
          "casting_time", "range",	"duration","concentration",
          "components", "materials", "description_length",
-         "classes"];
+         "classes", "description"];
         $spells = array();
         $spell_from_csv = $reader->fetchAssoc($keys);
         foreach ($spell_from_csv as $row) {
@@ -40,6 +40,6 @@ class SpellController extends Controller
     {
         $base=__DIR__.DIRECTORY_SEPARATOR;
         $spells = $this->getSpellsFromCsv($base.$this->file_build_path("..","..","..", "resources", "csv", "spell_csv.csv"));
-        return view('spells', ['spells' => $spells, 'attr_to_display' => ["name", "level", "school", "classes"]]);
+        return view('spells', ['spells' => $spells, 'attr_to_display' => ["name", "level", "school", "classes", "description"]]);
     }
 }
