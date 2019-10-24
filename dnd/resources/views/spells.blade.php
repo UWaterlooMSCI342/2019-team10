@@ -6,9 +6,9 @@
 
 <html>
 
-<div style="margin: 20px; display: inline-block; padding: 20px; height: 100px; width: 50%;
- text-align: center; background-color: #3D3131; border: 10px solid black">
-<h1 align = "center"><font size = "15"; color = #D30909> Dungeons & Dragons</font></h1>
+<div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
+ text-align: center; background-color: #3D3131; border: 10px solid black;">
+<h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
 </div>
 
 
@@ -16,7 +16,7 @@
 <h2> </h2>
 
 
-<div style="border:3px solid black; height:200px;overflow:auto;">
+<div style="border:3px solid black; height:400px;overflow:auto;">
 <table bgcolor = #B9C3BD style = "width:100%;">
 <tr>
     <th align = "left">Level</th>
@@ -25,78 +25,15 @@
     <th align = "left">Component</th>
     <th align = "left">School</th>
 </tr>
-</tr>
-    <td>5</td>
-    <td>Hellfire</td>
-    <td>Druid</td>
-    <td>Earth</td>
-    <td>Waterloo</td>
-</tr>
-</tr>
-    <td>8</td>
-    <td>Frost Bite</td>
-    <td>Elf</td>
-    <td>Fire</td>
-    <td>Laurier</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
-</tr>
-    <td>10</td>
-    <td>Claymore</td>
-    <td>Dward</td>
-    <td>Dynamite</td>
-    <td>Rivendel</td>
-</tr>
+@foreach($spells as $spell)
+    <tr>
+    @foreach($attr_to_display as $attr)
+        <td>{{$spell -> $attr}}</td>
+    @endforeach
+    </tr>
+@endforeach
+</table>
 </div>
-
 </body>
 </html>
 @endsection
