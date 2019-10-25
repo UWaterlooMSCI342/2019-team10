@@ -11,10 +11,12 @@
 |
 */
 
+use App\SpellController;
+
 $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/spells', 'SpellController@index');
     $router->get('/add', 'SpellController@add');
     $router->get('/spell/{id}', 'SpellController@dlt');
 	$router->get('/new-spells', 'SpellController@addNewSpells');
-	$router->get('/spelldetails', 'SpellController@spelldetails');
+	$router->get('/spell/{name}', 'SpellController@spellDetails');
 });
