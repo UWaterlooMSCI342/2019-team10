@@ -4,12 +4,6 @@
 
 @section('content')
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
   <style>
 body {
 	background-image: url("https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/1558559745443-KM38DVM6H0AIJWVJNT1H/ke17ZwdGBToddI8pDm48kJe8VwonRcYgr7f_0UVbdhh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbHrcextDeErdIU23wx0_6BTOY9zQNi_nItQjMEsHFYhlvkRmRO1_mFZFNCn67QdSw/ghosts_saltmarsh.jpg?format=2500w ");
@@ -23,7 +17,7 @@ body {
 </head>
 
 
-<body>
+<body align = 'center'>
 
 <div class="col-sm-10">
 <div style="background:#DCDCDC" class="jumbotron text-center">
@@ -149,7 +143,7 @@ body {
        
   <div class="form-group row">
     <div class="col-sm-10" align="center">
-      <button type="submit" class="btn btn-danger"><font color="white">ADD A SPELL</font></button>
+      <a href='/api/spells' class="btn btn-danger">ADD NEW SPELL</a>
     </div>
   </div>
   </body>
