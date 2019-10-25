@@ -33,10 +33,17 @@ class SpellController extends Controller
 		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];
         return view('add',['classes' => $classes]);
     }
+
     public function dlt($spellId){
         $spell = Spell::find($spellId);
         $spell->delete();
         $spell->classes()->detach();
         return redirect(url("api/spells"));
-      }
+    }
+
+    public function spelldetails()
+    {
+        return view('spelldetails');
+    }
+
 }
