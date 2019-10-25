@@ -15,18 +15,18 @@ class CreateSpellsTable extends Migration
     {
         Schema::create('spells', function (Blueprint $table) {
         
-            $table ->string('name_Id_primary');
-            $table ->integer('level_Id');
-            $table ->string ('school');
-            $table ->string ('ritual');
-            $table ->string ('casting_time');
-            $table ->string ('range_length');
-            $table ->string ('duration');
-            $table ->string ('concentration');
-            $table ->string ('component');
-            $table ->string ('material');
-            $table ->integer ('description_length');
-            $table ->string ('description_Id');
+            $table ->string('name')->primary('name');
+            $table ->integer('level');
+            $table ->string ('school')->default('unspecified');
+            $table ->string ('ritual')->default('unspecified');
+            $table ->string ('casting_time')->default('unspecified');
+            $table ->string ('range_length')->default('unspecified');
+            $table ->string ('duration')->default('unspecified');
+            $table ->string ('concentration')->default('unspecified');
+            $table ->string ('component')->default('unspecified');
+            $table ->string ('material')->default('unspecified');
+            $table ->integer ('description_length')->default(0);
+            $table ->string ('description')->default('unspecified');
 
         });
     }

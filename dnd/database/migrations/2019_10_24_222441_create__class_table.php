@@ -13,9 +13,8 @@ class CreateClassTable extends Migration
      */
     public function up()
     {
-        Schema::create('class', function (Blueprint $table) {
-            $table ->integer('class_Id_primary');
-            $table ->string ('class');
+        Schema::create('spell_classes', function (Blueprint $table) {
+            $table ->string ('class_name')->primary('class_name');
         });
     }
 
@@ -26,6 +25,6 @@ class CreateClassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_class');
+        Schema::dropIfExists('classes');
     }
 }
