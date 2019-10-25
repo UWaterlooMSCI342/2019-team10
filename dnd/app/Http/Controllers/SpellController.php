@@ -40,7 +40,7 @@ class SpellController extends Controller
     {
         $base=__DIR__.DIRECTORY_SEPARATOR;
         $spells = $this->getSpellsFromCsv($base.$this->file_build_path("..","..","..", "resources", "csv", "spell_csv.csv"));
-        return view('spells', ['spells' => $spells, 'attr_to_display' => ["name", "level", "school", "classes", "description"]]);
+        return view('spells', ['spells' => $spells, 'attr_to_display' => ["level", "name", "classes", "components", "school"]]);
     }
 	public function addNewSpells()
     {
