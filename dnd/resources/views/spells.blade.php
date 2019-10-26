@@ -29,9 +29,11 @@
 
 @foreach($spells as $spell)
     <tr>
-    @foreach($attr_to_display as $attr)
-        <td>{{$spell -> $attr}}</td>
-    @endforeach
+        <td>{{$spell -> level}}</td>
+        <td>{{$spell -> name}}</td>
+        <td>{{$spell -> formattedClasses()}}</td>
+        <td>{{$spell -> components}}</td>
+        <td>{{$spell -> school}}</td>
     </tr>
 @endforeach
 </table>
