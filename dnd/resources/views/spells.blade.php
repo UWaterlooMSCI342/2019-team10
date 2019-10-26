@@ -49,8 +49,7 @@
 </div>
 <br/>
 <div style="border:3px solid black; height:400px;overflow:auto;">
-
-    <table class = "table table-dark">
+    <table class="table table-inverse table-dark">
         <thead>
             <tr>
                 <th scope = "col">Level</th>
