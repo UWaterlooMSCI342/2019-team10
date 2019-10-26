@@ -4,7 +4,6 @@
 
 @section('content')
 
-<html>
 
 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
@@ -42,5 +41,4 @@
 </table>
 </div>
 </body>
-</html>
 @endsection
