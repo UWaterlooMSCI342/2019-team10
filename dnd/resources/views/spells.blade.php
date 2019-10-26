@@ -3,7 +3,7 @@
 @section('title', 'Page Title')
 
 @section('content')
-
+<html>
 
 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
@@ -11,20 +11,28 @@
     <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
 </div>
 
-<div class="container">                                     
+<div class="container">                                         
   <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter By</button>
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter By
+    <span class = "caret"></span></button>
     <ul class="dropdown-menu">
       <li><a href="#">Level</a></li>
+      <li class = "divider"></li>
       <li><a href="#">Name</a></li>
+      <li class = "divider"></li>
       <li><a href="#">Class</a></li>
+      <li class = "divider"></li>
       <li><a href="#">Component</a></li>
-      <li><a href="#">School</a></li>
+      <li class = "divider"></li>
+      <li class = "dropdown submenu"><a href="#">School <span class="caret"></span></a>
+        <ul class = "dropdown-menu">
+        <li><a href="#">Test</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </div>
-
-
+<h2> </h2>
 
 <div style="border:3px solid black; height:400px;overflow:auto;">
 
@@ -52,4 +60,14 @@
     </table>
 </div>
 
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
+</html>
 @endsection
