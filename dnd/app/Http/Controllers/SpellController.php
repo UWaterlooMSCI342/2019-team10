@@ -28,7 +28,6 @@ class SpellController extends Controller
     public function dlt($spell){
         $SpellID=$spell->id;
         Card::destroy($id);
-        return 'hi';
         return back();
       }
 }

@@ -3,6 +3,7 @@
 @section('title', 'Page Title')
 
 @section('content')
+
 <html>
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
@@ -66,5 +67,4 @@
     </table>
 </div>
 </body>
-</html>
 @endsection
