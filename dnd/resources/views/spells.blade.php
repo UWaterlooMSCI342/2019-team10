@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
 <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
@@ -34,7 +32,7 @@
         <td>{{$spell -> formattedClasses()}}</td>
         <td>{{$spell -> components}}</td>
         <td>{{$spell -> school}}</td>
-        <td><a href="#" class = "btn">Delete</a></td>
+        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn">Delete</a></td>
     </tr>
 @endforeach
 

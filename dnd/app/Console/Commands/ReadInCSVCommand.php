@@ -57,7 +57,7 @@ class ReadInCSVCommand extends Command
             }
             $spell->save();
             foreach($spell_classes as $class) {
-                $spell->classes()->attach($class, ['name' => $spell->name, 'class_name' => $class->class_name]);
+                $spell->classes()->attach($class, ['spell_id' => $spell->spell_id, 'class_id' => $class->class_id]);
             }
         }
     }
