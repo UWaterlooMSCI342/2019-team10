@@ -25,4 +25,10 @@ class SpellController extends Controller
 		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];
         return view('addNewSpells',['classes' => $classes]);
     }
+    public function dlt($spell){
+        $SpellID=$spell->id;
+        Card::destroy($id);
+        return 'hi';
+        return back();
+      }
 }

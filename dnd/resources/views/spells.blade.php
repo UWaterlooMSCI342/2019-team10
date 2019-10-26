@@ -17,7 +17,7 @@
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)">
 <h2> </h2>
 
-<div style="border:3px solid black; height:400px;overflow:auto;">
+<div style="border:3px solid black; height:600px;overflow:auto;">
 <table bgcolor = #B9C3BD style = "width:100%;">
 <tr>
     <th align = "left">Level</th>
@@ -25,6 +25,7 @@
     <th align = "left">Class</th>
     <th align = "left">Component</th>
     <th align = "left">School</th>
+    <th align = "left"> </th>
 </tr>
 
 @foreach($spells as $spell)
@@ -34,11 +35,12 @@
         <td>{{$spell -> formattedClasses()}}</td>
         <td>{{$spell -> components}}</td>
         <td>{{$spell -> school}}</td>
+        <td><a href="#" class = "btn">Delete</a></td>
     </tr>
 @endforeach
+
 </table>
 </div>
-
 </body>
 </html>
 @endsection
