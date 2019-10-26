@@ -9,7 +9,6 @@
  text-align: center; background-color: #3D3131; border: 10px solid black;">
     <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
 </div>
-
 <div >
     <div class="btn-group">                                         
         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
@@ -60,6 +59,7 @@
                     <td>{{$spell -> formattedClasses()}}</td>
                     <td>{{$spell -> components}}</td>
                     <td>{{$spell -> school}}</td>
+                    <td><a href="#" class = "btn">Delete</a></td>
                 </tr>
             @endforeach
         </tbody>

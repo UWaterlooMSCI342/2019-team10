@@ -13,5 +13,6 @@
 
 $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/spells', 'SpellController@index');
-	$router->get('/new-spells', 'SpellController@addNewSpells');
+    $router->get('/new-spells', 'SpellController@addNewSpells');
+    $router->delete('/spells/{spellName}', 'SpellController@dlt');
 });
