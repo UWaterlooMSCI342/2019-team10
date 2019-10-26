@@ -15,7 +15,8 @@ class CreateSpellsTable extends Migration
     {
         Schema::create('spells', function (Blueprint $table) {
         
-            $table ->string('name')->primary('name');
+            $table ->increments('spell_id');
+            $table ->string('name')->unique();
             $table ->integer('level');
             $table ->string ('school')->default('unspecified');
             $table ->string ('ritual')->default('unspecified');

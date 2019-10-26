@@ -17,8 +17,9 @@ class CreateSpellClassTable extends Migration
         Schema::create('spell_spell_class', function (Blueprint $table) {
        
             $table->increments('id');
-            $table->string('name');
-            $table->string('class_name');
+            $table->string('spell_id');
+            $table->string('class_id');
+            $table->unique(['class_id', 'spell_id']);
             });
       
     }

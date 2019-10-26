@@ -14,7 +14,8 @@ class CreateClassTable extends Migration
     public function up()
     {
         Schema::create('spell_classes', function (Blueprint $table) {
-            $table ->string ('class_name')->primary('class_name');
+            $table ->increments('class_id');
+            $table ->string ('class_name')->unique();
         });
     }
 

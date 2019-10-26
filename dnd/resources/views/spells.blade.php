@@ -60,7 +60,7 @@
                     <td>{{$spell -> formattedClasses()}}</td>
                     <td>{{$spell -> components}}</td>
                     <td>{{$spell -> school}}</td>
-                    <td><a href="#" class = "btn">Delete</a></td>
+                    <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn">Delete</a></td>
                 </tr>
             @endforeach
         </tbody>
