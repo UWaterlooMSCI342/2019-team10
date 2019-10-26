@@ -18,7 +18,8 @@
 <h2> </h2>
 
 <div style="border:3px solid black; height:400px;overflow:auto;">
-<table bgcolor = #B9C3BD style = "width:100%;">
+<table class = "table table-light table-striped" style = "width:100%;">
+<thead class = "thead thead-dark">
 <tr>
     <th align = "left">Level</th>
     <th align = "left">Name</th>
@@ -26,7 +27,7 @@
     <th align = "left">Component</th>
     <th align = "left">School</th>
 </tr>
-
+</thead>
 @foreach($spells as $spell)
     <tr>
         <td>{{$spell -> level}}</td>
