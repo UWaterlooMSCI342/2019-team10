@@ -19,13 +19,6 @@
         </div>
     </div>
     <div class="btn-group">                                         
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Name</span></a>
-        </div>
-    </div>
-    <div class="btn-group">                                         
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
