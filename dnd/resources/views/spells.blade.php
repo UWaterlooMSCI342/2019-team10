@@ -5,7 +5,6 @@
 @section('content')
 <html>
 
-
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
     <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
@@ -14,7 +13,7 @@
 <div class="container">                                         
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter By
-    <span class = "caret"></span></button>
+    </button>
     <ul class="dropdown-menu">
       <li><a href="#">Level</a></li>
       <li class = "divider"></li>
