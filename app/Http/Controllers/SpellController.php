@@ -42,9 +42,9 @@ class SpellController extends Controller
         $spells = $this->getSpellsFromCsv($base.$this->file_build_path("..","..","..", "resources", "csv", "spell_csv.csv"));
         return view('spells', ['spells' => $spells, 'attr_to_display' => ["level", "name", "classes", "components", "school"]]);
     }
-	public function addNewSpells()
+	public function add()
     {
 		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];
-        return view('addNewSpells',['classes' => $classes]);
+        return view('add',['classes' => $classes]);
     }
 }
