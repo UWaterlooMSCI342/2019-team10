@@ -28,10 +28,10 @@ class SpellController extends Controller
         return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
     }
 
-	public function addNewSpells()
+	public function add()
     {
 		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];
-        return view('addNewSpells',['classes' => $classes]);
+        return view('add',['classes' => $classes]);
     }
     public function dlt($spellId){
         $spell = Spell::find($spellId);
