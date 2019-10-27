@@ -3,14 +3,12 @@
 @section('title', 'Page Title')
 
 @section('content')
-<html>
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
     <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
 </div>
-
-<div >
+<div>
     <div class="btn-group">                                         
         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
         <span class = "caret"></span></button>
@@ -60,11 +58,11 @@
                     <td>{{$spell -> formattedClasses()}}</td>
                     <td>{{$spell -> components}}</td>
                     <td>{{$spell -> school}}</td>
+                    <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn">Delete</a></td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
 </body>
-</html>
 @endsection
