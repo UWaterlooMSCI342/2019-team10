@@ -23,6 +23,8 @@ body {
 </style>
 </head>
 
+
+
     <head>
         <title>App Name - @yield('title')</title> 
         <link href="style.css" rel="stylesheet" type="text/css">
@@ -33,7 +35,7 @@ body {
     </style> 
 
     </head>
-    
+
     <body>
         <div class="col-sm-20">
         <div style="background:#DCDCDC" class="jumbotron text-center">
@@ -71,6 +73,9 @@ body {
             </tr>
 
         </table>
+
+
+
 <br>
 </br>
         
