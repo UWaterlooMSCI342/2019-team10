@@ -14,4 +14,6 @@
 $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/spells', 'SpellController@index');
 	$router->get('/new-spells', 'SpellController@addNewSpells');
+    $router->get('/spell/{id}', 'SpellController@dlt');
+    $router->post('/spell', 'SpellController@NewSave');
 });

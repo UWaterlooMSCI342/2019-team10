@@ -27,7 +27,7 @@ body {
 
 <div class = whitefont>
 
-<form>
+<form action="{{url('/api/spell/')}}" method="POST">
 	
   <div class="form-group row">
   
@@ -143,7 +143,7 @@ body {
        
   <div class="form-group row">
     <div class="col-sm-10" align="center">
-      <a href='/api/spells' class="btn btn-danger">ADD NEW SPELL</a>
+      <input type="submit" class="btn btn-danger">
     </div>
   </div>
   </body>
