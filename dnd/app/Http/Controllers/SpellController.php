@@ -14,12 +14,20 @@ class SpellController extends Controller
      * @return void
      */
 
+    // public function 
+
     public function index()
     {
         $spells = Spell::all();
-        return view('spells', ['spells' => $spells]);
+        $levels = Spell::select('level')->distinct()->get();
+        $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
+        $components = Spell::select('components')->distinct()->get();
+        $school = Spell::select('school')->distinct()->get();
+      
+
+        return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
     }
-    
+
 	public function addNewSpells()
     {
 		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];

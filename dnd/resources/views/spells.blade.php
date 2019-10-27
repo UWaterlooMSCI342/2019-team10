@@ -10,36 +10,53 @@
     <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
 </div>
 
-<div >
-    <div class="btn-group">                                         
+<div>
+    <div class="btn-group"> 
+                                           
         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Level</span></a>
+        @foreach($levels as $level) 
+        <a class="dropdown-item" href="#"> {{($level->level)}}</a>
+        @endforeach
         </div>
+     
     </div>
+
     <div class="btn-group">                                         
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Class</span></a>
+        @foreach($class_name as $class_name) 
+        <a class="dropdown-item" href="#"> {{$class_name->class_name}}  </a>
+        @endforeach
         </div>
+
     </div>
     <div class="btn-group">                                         
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Component
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Component</span></a>
-        </div>
+        @foreach($components as $components) 
+        <a class="dropdown-item" href="#"> {{$components->components}}</a>
+        @endforeach
+    </div>
+
     </div>
     <div class="btn-group">                                         
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">School</span></a>
+        @foreach($school as $school) 
+        <a class="dropdown-item" href="#"> {{$school->school}}</a>
+        @endforeach
         </div>
     </div>
+
 </div>
+    
+
+
 <br/>
 <div style="border:3px solid black; height:400px;overflow:auto;">
     <table class="table table-inverse table-dark">
@@ -53,6 +70,7 @@
             </tr>
         </thead>
         <tbody>
+
             @foreach($spells as $spell)
                 <tr>
                     <td>{{$spell -> level}}</td>
@@ -63,6 +81,10 @@
                 </tr>
             @endforeach
         </tbody>
+
+        
+
+
     </table>
 </div>
 </body>
