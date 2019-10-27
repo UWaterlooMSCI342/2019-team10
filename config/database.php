@@ -1,3 +1,6 @@
+return[
+'default' => 'mysql',
+'connections' => [
 'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'db4free.net'),
@@ -12,3 +15,5 @@
             'strict' => true,
             'engine' => null,
         ],
+		]
+		]
