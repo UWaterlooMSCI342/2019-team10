@@ -51,7 +51,7 @@ class SpellController extends Controller
     }
         return view('spelldetails',['details' => $details],['description' => $description]);*/
 
-        $spell = Spell::find($spellId);
+        $spell = Spell::find($name);
         $spell->delete();
         $spell->classes()->detach();
         return redirect(url("api/spells"));
