@@ -33,9 +33,12 @@ class SpellController extends Controller
         return redirect(url("api/spells"));
       }
     public function NewSave(Request $request){
-        //$spell = Spell::create();
-        // $spell -> classes()->attach();
-        // $this->belongsToMany(Spell::class);
+        // $spell->new Spell;
+        // $spell->attribute('spellname', 'level', 'type', 'castingtime', 'components', 'duration','range', 'description')
+        // $request->input('spellname', 'level', 'type', 'castingtime', 'components', 'duration','range', 'description')
+        // $spell = Spell::create();
+        // $spell -> classes()->attach('api/spell');
+        // $spell->belongsToMany(Spell::class);
         return $request;
     }
 }

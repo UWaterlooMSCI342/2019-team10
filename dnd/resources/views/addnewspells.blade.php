@@ -3,6 +3,8 @@
 @section('title', 'Page Title')
 
 @section('content')
+app('Illuminate\Http\Request');
+
 <head>
   <style>
 body {
@@ -30,57 +32,66 @@ body {
 <form action="{{url('/api/spell/')}}" method="POST">
 	
   <div class="form-group row">
+
+  <!-- creating variables -->
+
+  <!-- $spellname = config('app.spellname');
+  $level = config('app.level');
+  $type = config('app.Type');
+  $castingtime = config('app.castingtime');
+  $components = config('app.components');
+  $duration = config('app.duration');
+  $range = config('app.range');
+  $description = config('app.description'); -->
   
   <div class="col-sm-10">
 	<label> <b>Spell Name:</b> </label>
-      <input type="spellname" class="form-control" id="level" placeholder="Spell Name">
+      <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name" $spellname>
     </div>
 	</div>
 	<div class="form-group row">
 	    <div class="col-sm-10">
 	<label> <b>Level:</b> </label>
-      <input type="level" class="form-control" id="level" placeholder="Level">
+      <input type="level" name="level" class="form-control" id="level" placeholder="Level" $level>
     </div>
 	</div>
 	
 	  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Type:</b> </label>
-      <input type="type" class="form-control" id="type" placeholder="Type">
+      <input type="type" name="type" class="form-control" id="type" placeholder="Type" $type>
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Casting Time:</b> </label>
-      <input type="castingtime" class="form-control" id="castingtime" placeholder="Casting Time">
+      <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Casting Time" $castingtime>
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Components:</b> </label>
-      <input type="components" class="form-control" id="components" placeholder="Components">
+      <input type="components" name="components" class="form-control" id="components" placeholder="Components" $components>
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Duration:</b> </label>
-      <input type="duration" class="form-control" id="duration" placeholder="Duration">
+      <input type="duration" name="duration" class="form-control" id="duration" placeholder="Duration" $duration>
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Range</b> </label>
-      <input type="rangey" class="form-control" id="rangey" placeholder="Range">
+      <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Range" $range>
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Description:</b> </label>
-      <input type="description" class="form-control" id="description" placeholder="Description">
+      <input type="description" name="description" class="form-control" id="description" placeholder="Description" $description> 
     </div>
 	</div>
-
-	
 
 
     <fieldset class="form-group">
