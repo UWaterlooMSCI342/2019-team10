@@ -143,7 +143,7 @@ body {
        
   <div class="form-group row">
     <div class="col-sm-10" align="center">
-      <a href='/api/spells' class="btn btn-danger">ADD NEW SPELL</a>
+      <a href="{{url('/api/spells')}}" class="btn btn-danger">ADD NEW SPELL</a>
     </div>
   </div>
   </body>

@@ -10,6 +10,10 @@
 </div>
 <div>
     <div class="btn-group">                                         
+        <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
+        </div>
+	
+    <div class="btn-group">                                         
         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
