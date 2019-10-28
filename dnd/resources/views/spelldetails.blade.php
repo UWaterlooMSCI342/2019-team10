@@ -72,8 +72,9 @@ body {
                 @endforeach
             </tr>
 
-        </table>
+            
 
+        </table>
 
 
 <br>

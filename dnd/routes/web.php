@@ -13,7 +13,7 @@
 
 use App\SpellController;
 
-$router->group(['prefix'=>'api'], function() use($router){
+	$router->group(['prefix'=>'api'], function() use($router){
     $router->get('/spells', 'SpellController@index');
     $router->get('/add', 'SpellController@add');
     $router->get('/spell/{id}', 'SpellController@dlt');
