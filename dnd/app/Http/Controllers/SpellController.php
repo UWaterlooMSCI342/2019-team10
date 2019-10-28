@@ -41,13 +41,10 @@ class SpellController extends Controller
         return redirect(url("api/spells"));
     }
     
-    public function spellDetails($name)
+    public function spellDetails($id)
     {
-        $details = [$name,'2','Abjuration','Non-ritual','1 action','30 feet','8 hours','Non-concentration','V S M', 'A tiny strip of white cloth','Clearic, Paladin'];
-        
-        $description = ['Your spell bolsters your allies with toughness and resolve. Choose up to three creatures within range. Each target’s hit point maximum and current hit points increase by 5 for the duration. At Higher Levels. When you cast this spell using a spell slot of 3rd level or higher, a target’s hit points increase by an additional 5 for each slot level above 2nd.'];
-        
-        return view('spelldetails',['details' => $details],['description' => $description]);
+        $spell = Spell::find($id);
+        return view('spelldetails',['spell' => $spell]);
     }
 
 }
