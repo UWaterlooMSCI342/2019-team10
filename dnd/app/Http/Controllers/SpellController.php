@@ -47,6 +47,22 @@ class SpellController extends Controller
         return view('spelldetails',['spell' => $spell]);
     }
 
+    public function filter($filterName, $filter) {
+        $levels = Spell::select('level')->distinct()->get();
+        $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
+        $components = Spell::select('components')->distinct()->get();
+        $school = Spell::select('school')->distinct()->get();
+
+        if ($filterName != "classes") {
+            $filter = str_replace ('%20', " ", $filter);
+            $spells = Spell::where($filterName, $filter)->get();
+            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
+        } else {
+            $spells = Spell::all();
+            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
+        }
+    }
+
 }
 
 

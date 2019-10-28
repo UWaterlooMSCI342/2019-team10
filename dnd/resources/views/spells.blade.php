@@ -18,7 +18,7 @@
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($levels as $level) 
-        <a class="dropdown-item" href="#"> {{($level->level)}}</a>
+        <a class="dropdown-item" href="{{url('/api/spell/filter/level/' . $level->level)}}"> {{($level->level)}}</a>
         @endforeach
         </div>
      
@@ -29,7 +29,7 @@
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($class_name as $class_name) 
-        <a class="dropdown-item" href="#"> {{$class_name->class_name}}  </a>
+        <a class="dropdown-item" href="{{url('/api/spell/filter/classes/' . $class_name->class_name)}}"> {{$class_name->class_name}}  </a>
         @endforeach
         </div>
 
@@ -39,7 +39,7 @@
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($components as $components) 
-        <a class="dropdown-item" href="#"> {{$components->components}}</a>
+        <a class="dropdown-item" href="{{url('/api/spell/filter/components/' . $components->components)}}"> {{$components->components}}</a>
         @endforeach
     </div>
 
@@ -49,7 +49,7 @@
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($school as $school) 
-        <a class="dropdown-item" href="#"> {{$school->school}}</a>
+        <a class="dropdown-item" href="{{url('/api/spell/filter/school/' . $school->school)}}"> {{$school->school}}</a>
         @endforeach
         </div>
     </div>
