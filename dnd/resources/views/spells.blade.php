@@ -10,7 +10,7 @@
 </div>
 <div>
     <div class="btn-group">                                         
-        <a href='/api/add' class="btn btn-primary">Add Spell</a>
+        <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
         </div>
 	
     <div class="btn-group">                                         
