@@ -75,7 +75,7 @@
             @foreach($spells as $spell)
                 <tr>
                     <td>{{$spell -> level}}</td>
-                    <td>{{$spell -> name}}</td>
+                    <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
                     <td>{{$spell -> formattedClasses()}}</td>
                     <td>{{$spell -> components}}</td>
                     <td>{{$spell -> school}}</td>
