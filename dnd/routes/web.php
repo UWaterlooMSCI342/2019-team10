@@ -18,5 +18,6 @@ $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/add', 'SpellController@add');
     $router->get('/spell/{id}', 'SpellController@dlt');
 	$router->get('/new-spells', 'SpellController@addNewSpells');
-	$router->get('/spell/detail/{id}', 'SpellController@spellDetails');
+    $router->get('/spell/detail/{id}', 'SpellController@spellDetails');
+	$router->get('/spell/filter/{filterName}/{filter}', 'SpellController@filter');    
 });
