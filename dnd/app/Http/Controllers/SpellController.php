@@ -33,12 +33,38 @@ class SpellController extends Controller
         return redirect(url("api/spells"));
       }
     public function NewSave(Request $request){
-        // $spell->new Spell;
-        // $spell->attribute('spellname', 'level', 'type', 'castingtime', 'components', 'duration','range', 'description')
-        // $request->input('spellname', 'level', 'type', 'castingtime', 'components', 'duration','range', 'description')
-        // $spell = Spell::create();
-        // $spell -> classes()->attach('api/spell');
-        // $spell->belongsToMany(Spell::class);
-        return $request;
+        $spell = new Spell;
+        $spell->attribute('spellname');
+        $spell->attribute('level'); 
+        $spell->attribute('type'); 
+        $spell->attribute('castingtime'); 
+        $spell->attribute('components'); 
+        $spell->attribute('duration'); 
+        $spell->attribute('range'); 
+        $spell->attribute('description'); 
+        $spell->attribute('ritual'); 
+        $spell->attribute('concentration'); 
+        $spell->attribute('classes'); 
+        $request->input('spellname', 'level', 'type', 'castingtime', 'components', 'duration','range', 'description', 'ritual', 'concentration', 'classes');
+        $spell = Spell::create();
+        $spell -> classes()->attach('api/spell');
+        foreach ($spell as $attr) {
+            if ($attr == 'classes') {
+                $tmp=explode (",", $row[$attr]);
+                foreach ($tmp as $class) {
+                    $class = SpellClass::firstOrCreate(['class_name'=>$class]);
+                    array_push($spell_classes, $class);
+                }
+            } else {
+                $spell->$attr=$row[$attr];
+            }
+        }
+            $spell->save();
+            foreach($spell_classes as $class) {
+                $spell->classes()->attach($class, ['name' => $spell->name, 'class_name' => $class->class_name]);
+            }
+        //$spell->belongsToMany(Spell::class);
+        return redirect(url("api/spells"));
     }
 }
+
