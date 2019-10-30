@@ -8,13 +8,29 @@
  text-align: center; background-color: #3D3131; border: 10px solid black;">
     <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
 </div>
+
 <div>
 
 	
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
         </div>
-<form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
+		
+		
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
+  Advanced Filter
+</button>
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Advanced Filter Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
 <select name = "level" class = "browser-default custom-select custom-select-lg mb-3">
 		@foreach($levels as $level) 
 		<option value = "{{($level->level)}}">{{($level->level)}}</option>
@@ -41,8 +57,16 @@
 		<option value = "{{($school->school)}}">{{($school->school)}}</option>
 		@endforeach
     </select>
-  <input type="submit" value="Submit">
+  
+      </div>
+      <div class="modal-footer">
+	  <input type="submit" value="Submit" class="btn btn-success">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
 </form>
+    </div>
+  </div>
+</div>
 </div>
     
 
