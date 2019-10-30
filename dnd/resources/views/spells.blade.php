@@ -35,15 +35,27 @@
 
     </div>
     <div class="btn-group">                                         
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Component
+        <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ritual
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
-        @foreach($components as $components) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/components/' . $components->components)}}"> {{$components->components}}</a>
+        @foreach($ritual as $ritual) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/ritual/' . $ritual->ritual)}}"> {{$ritual->ritual}}</a>
         @endforeach
     </div>
 
     </div>
+	
+	    <div class="btn-group">                                         
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concentration
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($concentration as $concentration) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/concentration/' . $concentration->concentration)}}"> {{$concentration->concentration}}</a>
+        @endforeach
+    </div>
+
+    </div>
+	
     <div class="btn-group">                                         
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
         <span class = "caret"></span></button>
@@ -66,7 +78,8 @@
                 <th scope = "col">Level</th>
                 <th scope = "col">Name</th>
                 <th scope = "col">Class</th>
-                <th scope = "col">Component</th>
+                <th scope = "col">Ritual</th>
+				<th scope = "col">Concentration</th>
                 <th scope = "col">School</th>
             </tr>
         </thead>
@@ -77,7 +90,8 @@
                     <td>{{$spell -> level}}</td>
                     <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
                     <td>{{$spell -> formattedClasses()}}</td>
-                    <td>{{$spell -> components}}</td>
+                    <td>{{$spell -> ritual}}</td>
+					<td>{{$spell -> concentration}}</td>
                     <td>{{$spell -> school}}</td>
                     <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn">Delete</a></td>
                 </tr>

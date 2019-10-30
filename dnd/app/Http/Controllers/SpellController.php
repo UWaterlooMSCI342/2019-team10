@@ -19,13 +19,15 @@ class SpellController extends Controller
     public function index()
     {
         $spells = Spell::all();
+		$concentration = Spell::select('concentration')->distinct()->get();
+		$ritual = Spell::select('ritual')->distinct()->get();
         $levels = Spell::select('level')->distinct()->get();
         $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
         $components = Spell::select('components')->distinct()->get();
         $school = Spell::select('school')->distinct()->get();
       
 
-        return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
+        return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school, 'ritual' => $ritual, 'concentration' => $concentration]);
     }
 
 	public function add()
@@ -49,6 +51,8 @@ class SpellController extends Controller
 
     public function filter($filterName, $filter) {
         $levels = Spell::select('level')->distinct()->get();
+		$concentration = Spell::select('concentration')->distinct()->get();
+		$ritual = Spell::select('ritual')->distinct()->get();
         $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
         $components = Spell::select('components')->distinct()->get();
         $school = Spell::select('school')->distinct()->get();
@@ -56,10 +60,10 @@ class SpellController extends Controller
         if ($filterName != "classes") {
             $filter = str_replace ('%20', " ", $filter);
             $spells = Spell::where($filterName, $filter)->get();
-            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
+            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school, 'ritual' => $ritual, 'concentration' => $concentration]);
         } else {
             $spells = Spell::all();
-            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
+            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school, 'ritual' => $ritual, 'concentration' => $concentration]);
         }
     }
 
