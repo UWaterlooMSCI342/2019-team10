@@ -16,27 +16,28 @@
         </div>
 <form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
 <select name = "level" class = "browser-default custom-select custom-select-lg mb-3">
-		@foreach($level as $level) 
+		@foreach($levels as $level) 
 		<option value = "{{($level->level)}}">{{($level->level)}}</option>
 		@endforeach
     </select>
+
  <select name = "class_name" class = "browser-default custom-select custom-select-lg mb-3">
-		@foreach($class_name as $class_name) 
+		@foreach($class_names as $class_name) 
 		<option value = "{{($class_name->class_name)}}">{{($class_name->class_name)}}</option>
 		@endforeach
     </select>
 	<select name = "ritual" class = "browser-default custom-select custom-select-lg mb-3">
-		@foreach($ritual as $ritual) 
+		@foreach($rituals as $ritual) 
 		<option value = "{{($ritual->ritual)}}">{{($ritual->ritual)}}</option>
 		@endforeach
     </select>
 	<select name = "concentration" class = "browser-default custom-select custom-select-lg mb-3">
-		@foreach($concentration as $concentration) 
+		@foreach($concentrations as $concentration) 
 		<option value = "{{($concentration->concentration)}}">{{($concentration->concentration)}}</option>
 		@endforeach
     </select>
 	<select name = "school" class = "browser-default custom-select custom-select-lg mb-3">
-		@foreach($school as $school) 
+		@foreach($schools as $school) 
 		<option value = "{{($school->school)}}">{{($school->school)}}</option>
 		@endforeach
     </select>

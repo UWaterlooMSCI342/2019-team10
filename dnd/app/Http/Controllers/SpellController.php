@@ -22,7 +22,7 @@ class SpellController extends Controller
 		$class_name = SpellClass::select('class_name')->distinct('class_name')->get();
 		$school = Spell::select('school')->distinct()->get();
 		
-		return ['spells'=> $spells, 'level'=>$level, 'class_name'=> $class_name, 'school' => $school, 'ritual' => $ritual, 'concentration' => $concentration];
+		return ['spells'=> $spells, 'levels'=>$level, 'class_names'=> $class_name, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
 	}
     public function index()
     {
