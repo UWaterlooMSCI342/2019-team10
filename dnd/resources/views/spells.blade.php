@@ -9,63 +9,39 @@
     <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
 </div>
 <div>
+
+	
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
         </div>
-	
-    <div class="btn-group">                                         
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($levels as $level) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/level/' . $level->level)}}"> {{($level->level)}}</a>
-        @endforeach
-        </div>
-     
-    </div>
-
-    <div class="btn-group">                                         
-        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($class_name as $class_name) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/classes/' . $class_name->class_name)}}"> {{$class_name->class_name}}  </a>
-        @endforeach
-        </div>
-
-    </div>
-    <div class="btn-group">                                         
-        <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ritual
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($ritual as $ritual) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/ritual/' . $ritual->ritual)}}"> {{$ritual->ritual}}</a>
-        @endforeach
-    </div>
-
-    </div>
-	
-	    <div class="btn-group">                                         
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concentration
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($concentration as $concentration) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/concentration/' . $concentration->concentration)}}"> {{$concentration->concentration}}</a>
-        @endforeach
-    </div>
-
-    </div>
-	
-    <div class="btn-group">                                         
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($school as $school) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/school/' . $school->school)}}"> {{$school->school}}</a>
-        @endforeach
-        </div>
-    </div>
-
+<form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
+<select name = "level" class = "browser-default custom-select custom-select-lg mb-3">
+		@foreach($level as $level) 
+		<option value = "{{($level->level)}}">{{($level->level)}}</option>
+		@endforeach
+    </select>
+ <select name = "class_name" class = "browser-default custom-select custom-select-lg mb-3">
+		@foreach($class_name as $class_name) 
+		<option value = "{{($class_name->class_name)}}">{{($class_name->class_name)}}</option>
+		@endforeach
+    </select>
+	<select name = "ritual" class = "browser-default custom-select custom-select-lg mb-3">
+		@foreach($ritual as $ritual) 
+		<option value = "{{($ritual->ritual)}}">{{($ritual->ritual)}}</option>
+		@endforeach
+    </select>
+	<select name = "concentration" class = "browser-default custom-select custom-select-lg mb-3">
+		@foreach($concentration as $concentration) 
+		<option value = "{{($concentration->concentration)}}">{{($concentration->concentration)}}</option>
+		@endforeach
+    </select>
+	<select name = "school" class = "browser-default custom-select custom-select-lg mb-3">
+		@foreach($school as $school) 
+		<option value = "{{($school->school)}}">{{($school->school)}}</option>
+		@endforeach
+    </select>
+  <input type="submit" value="Submit">
+</form>
 </div>
     
 
@@ -97,11 +73,11 @@
                 </tr>
             @endforeach
         </tbody>
-
-        
-
-
+		
     </table>
+	
+
+	
 </div>
 </body>
 @endsection
