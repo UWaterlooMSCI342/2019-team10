@@ -6,7 +6,7 @@
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
-    <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
+    <a href="{{url('/api/spells')}}"><h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1></a>
 </div>
 
 <div>
@@ -30,8 +30,8 @@
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
-        @foreach($class_names as $class_name) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/classes/' . $class_name->class_name)}}"> {{$class_name->class_name}}  </a>
+        @foreach($classes as $class) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/class/' . $class->class_id)}}"> {{$class->class_name}}  </a>
         @endforeach
         </div>
 
@@ -89,9 +89,9 @@
 		@endforeach
     </select>
 
- <select name = "class_name" class = "browser-default custom-select custom-select-lg mb-3">
-		@foreach($class_names as $class_name) 
-		<option value = "{{($class_name->class_name)}}">{{($class_name->class_name)}}</option>
+ <select name = "class" class = "browser-default custom-select custom-select-lg mb-3">
+		@foreach($classes as $class) 
+		<option value = "{{($class->class_id)}}">{{($class->class_name)}}</option>
 		@endforeach
     </select>
 	<select name = "ritual" class = "browser-default custom-select custom-select-lg mb-3">
