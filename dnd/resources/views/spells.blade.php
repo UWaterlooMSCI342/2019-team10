@@ -124,8 +124,9 @@
 <br/>
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
-        <input type="submit" value="Add to Spellbook" class="btn btn-danger">
+        <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal"> Add to Spellbook </a>
     </div>
+
     <div style="height:400px;overflow:auto;">
         <table class="table table-inverse table-dark">
             <thead>
@@ -159,6 +160,7 @@
             </tbody>
         </table>
     </div>
+    @include("spellbook", ["spellbook" => $spellbooks])
 </form>
 </body>
 @endsection

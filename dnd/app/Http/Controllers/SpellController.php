@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Spell;
 use App\SpellClass;
 use Illuminate\Http\Request;
+use App\SpellBook;
 use League\Csv\Reader;
 use Illuminate\Support\Facades\DB;
 class SpellController extends Controller
@@ -28,6 +29,7 @@ class SpellController extends Controller
     {
         $spells = Spell::all();
         return view('spells', $this->getFilterValues($spells));
+
     }
 
 	public function add()

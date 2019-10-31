@@ -1,44 +1,31 @@
-@extends('layout.master')
-
-@section('title', 'Page Title')
-
-@section('content')
-<html>
-<head>
-<body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
-<div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
- text-align: center; background-color: #3D3131; border: 10px solid black;">
-    <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
-</div>
-
-<div>
-
-    <div class="btn-group">                                         
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Spellbook
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($name as $name) 
-        <a class="dropdown-item" href="{{url('/api/SpellBook/filter/spell_book_id/' . $name->name)}}"> {{$name->name}}</a>
-        @endforeach
+<div class="modal fade" id="spellbookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Select or Create Spellbook</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">	
+        <label for = "dropdown">Select Existing Spellbook</label>
+        <select id = "dropdown" name = "spellbook" class = "browser-default custom-select custom-select-lg mb-3">
+            @foreach($spellbooks as $spellbook)
+            <option value = "{{$spellbook->spell_book_id}}">{{$spellbook->name}}</option>
+            @endforeach
+        </select>
+        <form>
+        <div class="form-group">
+          <label for="dropdown">Name of New Spellbook</label>
+          <input name = "newSpellbookName" type="text" class="form-control" id="create_new" aria-describedby="emailHelp" placeholder="Type name">
+          <small class="form-text text-muted">This spellbook will  be added to your collection.</small>
         </div>
-    </div>
-
+      </form>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" value="Submit" class="btn btn-success">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
 </div>
-<div style="border:3px solid black; height:400px;overflow:auto;">
-    <table class="table table-inverse table-dark">
-        <thead>
-            <tr>
-                <th scope = "col">Level</th>
-                <th scope = "col">Name</th>
-                <th scope = "col">Class</th>
-                <th scope = "col">Component</th>
-                <th scope = "col">School</th>
-            </tr>
-        </thead>
-    </table>
-</div>
-</head>
-</body>
-</html>
-
-@endsection 
