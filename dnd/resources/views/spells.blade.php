@@ -15,11 +15,63 @@
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
         </div>
+<div class="btn-group">                                         
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($levels as $level) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/level/' . $level->level)}}"> {{($level->level)}}</a>
+        @endforeach
+        </div>
+     
+    </div>
+
+    <div class="btn-group">                                         
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($class_names as $class_name) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/classes/' . $class_name->class_name)}}"> {{$class_name->class_name}}  </a>
+        @endforeach
+        </div>
+
+    </div>
+
+	<div class="btn-group">                                         
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ritual
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($rituals as $ritual) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/ritual/' . $ritual->ritual)}}"> {{$ritual->ritual}}  </a>
+        @endforeach
+        </div>
+    </div>
+	
+	<div class="btn-group">                                         
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concentration
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($concentrations as $concentration) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/concentration/' . $concentration->concentration)}}"> {{$concentration->concentration}}  </a>
+        @endforeach
+        </div>
+    </div>
+	
+    <div class="btn-group">                                         
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($schools as $school) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/school/' . $school->school)}}"> {{$school->school}}</a>
+        @endforeach
+        </div>
+    </div>
 		
-		
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Modal">
   Advanced Filter
 </button>
+</div>
+
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -66,7 +118,6 @@
 </form>
     </div>
   </div>
-</div>
 </div>
     
 

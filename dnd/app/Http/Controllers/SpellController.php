@@ -21,12 +21,13 @@ class SpellController extends Controller
 		$ritual = Spell::select('ritual')->distinct()->get();
 		$class_name = SpellClass::select('class_name')->distinct('class_name')->get();
 		$school = Spell::select('school')->distinct()->get();
-		
-		return ['spells'=> $spells, 'levels'=>$level, 'class_names'=> $class_name, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
+		$spells= $spells->sortBy('level');
+		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'class_names'=> $class_name, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
 	}
     public function index()
     {
         $spells = Spell::all();
+		
         return view('spells', $this->getFilterValues($spells));
     }
 
@@ -55,9 +56,8 @@ class SpellController extends Controller
         if ($filterName != "classes") {
             $filter = str_replace ('%20', " ", $filter);
             $spells = Spell::where($filterName, $filter);
-            return view('spells', getFilterValues($spells->get()));
+            return view('spells', $this->getFilterValues($spells->get()));
         } else {
-        
             return view('spells', $this->getFilterValues($spells->get()));
         }
     }
