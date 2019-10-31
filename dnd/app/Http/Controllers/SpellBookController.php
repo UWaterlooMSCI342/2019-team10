@@ -6,6 +6,7 @@ use App\SpellClass;
 use App\SpellBook;
 
 use League\Csv\Reader;
+use Illuminate\Http\Request;
 
 class SpellBookController extends Controller
 
@@ -23,5 +24,8 @@ public function viewSpellBook () {
         $name = SpellBook::select('name')->get();
         $spell_book_id=SpellBook::select('spell_book_id')->get();
         return view('spellBook', ['name'=>$name, 'spell_book_id'=>$spell_book_id]);
+    public function addSpells(Request $request) {
+        return $request;
+    }
 }
 }
