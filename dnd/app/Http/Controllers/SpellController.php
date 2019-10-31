@@ -23,8 +23,6 @@ class SpellController extends Controller
         $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
         $components = Spell::select('components')->distinct()->get();
         $school = Spell::select('school')->distinct()->get();
-      
-
         return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
     }
 
