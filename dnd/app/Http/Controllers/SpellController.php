@@ -27,7 +27,6 @@ class SpellController extends Controller
     public function index()
     {
         $spells = Spell::all();
-		
         return view('spells', $this->getFilterValues($spells));
     }
 
