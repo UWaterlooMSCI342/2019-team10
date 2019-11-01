@@ -66,24 +66,15 @@ class SpellController extends Controller
     }
 public function multifilter(Request $request){
 	$spells = Spell::query();
-		if($request->input('class')){
+
 			$spell_ids = DB::table('spell_spell_class')
 			->select('spell_id')->where('class_id',$request->input('class'))->pluck('spell_id')->all();
 			$spells = $spells->whereIn('spell_id',$spell_ids);
-		}
-
-		if($request->input('level')){
 			$spells = $spells->where('level',$request->input('level'));
-		}
-		if($request->input('concentration')){
 			$spells = $spells->where('concentration',$request->input('concentration'));
-		}
-		if($request->input('ritual')){
 			$spells = $spells->where('ritual',$request->input('ritual'));
-		}
-		if($request->input('school')){
 			$spells = $spells->where('school',$request->input('school'));
-		}
+		
 	
 	return view('spells', $this->getFilterValues($spells->get()));
 	

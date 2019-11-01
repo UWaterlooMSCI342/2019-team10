@@ -27,7 +27,7 @@
     </div>
 
     <div class="btn-group">                                         
-        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($classes as $class) 
@@ -38,7 +38,7 @@
     </div>
 
 	<div class="btn-group">                                         
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ritual
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ritual
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($rituals as $ritual) 
@@ -48,7 +48,7 @@
     </div>
 	
 	<div class="btn-group">                                         
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concentration
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concentration
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($concentrations as $concentration) 
@@ -58,7 +58,7 @@
     </div>
 	
     <div class="btn-group">                                         
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($schools as $school) 
@@ -67,7 +67,7 @@
         </div>
     </div>
 		
-<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Modal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
   Advanced Filter
 </button>
 </div>
