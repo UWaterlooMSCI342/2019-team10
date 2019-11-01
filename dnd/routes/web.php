@@ -10,10 +10,11 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
+ 
 use App\SpellController;
 
 $router->group(['prefix'=>'api'], function() use($router){
+	$router->post('/spell/filter/multifilter', 'SpellController@multifilter');  
     $router->get('/spells', 'SpellController@index');
     $router->get('/add', 'SpellController@add');
     $router->get('/spell/{id}', 'SpellController@dlt');
