@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use App\Spell;
 use App\SpellClass;
-
+use Illuminate\Http\Request;
 use League\Csv\Reader;
-
+use Illuminate\Support\Facades\DB;
 class SpellController extends Controller
 {
     /**
@@ -15,15 +15,19 @@ class SpellController extends Controller
      */
 
     // public function 
-
+	private function getFilterValues($spells){
+		$level = Spell::select('level')->distinct()->get();
+		$concentration = Spell::select('concentration')->distinct()->get();
+		$ritual = Spell::select('ritual')->distinct()->get();
+		$classes = SpellClass::select('class_name','class_id')->distinct('class_name')->get();
+		$school = Spell::select('school')->distinct()->get();
+		$spells= $spells->sortBy('level');
+		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
+	}
     public function index()
     {
         $spells = Spell::all();
-        $levels = Spell::select('level')->distinct()->get();
-        $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
-        $components = Spell::select('components')->distinct()->get();
-        $school = Spell::select('school')->distinct()->get();
-        return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
+        return view('spells', $this->getFilterValues($spells));
     }
 
 	public function add()
@@ -46,21 +50,34 @@ class SpellController extends Controller
     }
 
     public function filter($filterName, $filter) {
-        $levels = Spell::select('level')->distinct()->get();
-        $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
-        $components = Spell::select('components')->distinct()->get();
-        $school = Spell::select('school')->distinct()->get();
-        
-        if ($filterName != "classes") {
-            $filter = str_replace ('%20', " ", $filter);
-            $spells = Spell::where($filterName, $filter)->get();
-            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
-        } else {
-            $spells = Spell::all();
-            return view('spells', ['spells' => $spells,  'levels'=>$levels, 'class_name'=> $class_name, 'components' => $components, 'school' => $school]);
+	    spells = Spell::query();
+      if ($filterName != "class") {
+        $filter = str_replace ('%20', " ", $filter);
+        $spells = Spell::where($filterName, $filter);
+        return view('spells', $this->getFilterValues($spells->get()));
+      } else {
+			  $spell_ids = DB::table('spell_spell_class')
+			  ->select('spell_id')->where('class_id',$filter)->pluck('spell_id')->all();
+			  $spells = $spells->whereIn('spell_id',$spell_ids);
+        return view('spells', $this->getFilterValues($spells->get()));
         }
     }
+public function multifilter(Request $request){
+	$spells = Spell::query();
 
+			$spell_ids = DB::table('spell_spell_class')
+			->select('spell_id')->where('class_id',$request->input('class'))->pluck('spell_id')->all();
+			$spells = $spells->whereIn('spell_id',$spell_ids);
+			$spells = $spells->where('level',$request->input('level'));
+			$spells = $spells->where('concentration',$request->input('concentration'));
+			$spells = $spells->where('ritual',$request->input('ritual'));
+			$spells = $spells->where('school',$request->input('school'));
+		
+	
+	return view('spells', $this->getFilterValues($spells->get()));
+	
 }
+}
+
 
 
