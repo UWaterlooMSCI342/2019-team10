@@ -50,7 +50,7 @@ class SpellController extends Controller
         $class_name = SpellClass::select('class_name')->distinct('class_name')->get();
         $components = Spell::select('components')->distinct()->get();
         $school = Spell::select('school')->distinct()->get();
-
+        
         if ($filterName != "classes") {
             $filter = str_replace ('%20', " ", $filter);
             $spells = Spell::where($filterName, $filter)->get();
