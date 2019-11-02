@@ -51,9 +51,9 @@ class SpellController extends Controller
 
     public function NewSave(Request $request){
         $spell = new Spell;
-        $class = SpellClass::find('classe_id');
+        //$class = SpellClass::find('classe_id');
         $spell->name='spellname';
-        $spell->level='level'; 
+        $spell->level=(int)'level'; 
         $spell->school='type'; 
         $spell->casting_time='castingtime'; 
         $spell->components='components'; 
@@ -62,21 +62,11 @@ class SpellController extends Controller
         $spell->description='description'; 
         $spell->ritual='ritual'; 
         $spell->concentration='concentration'; 
-        $spell->classes='classes'; 
+        //$classes->classes='classes'; 
+        $request->input('spellname', (int)'level', 'type', 'castingtime', 'components', 'duration','range', 'description', 'ritual', 'concentration', 'classes');
         $spell->save();
-       // $request->input('spellname', 'level', 'type', 'castingtime', 'components', 'duration','range', 'description', 'ritual', 'concentration', 'classes');
-        DB::insert('insert into spells (spellname, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('spellname'), NEXTREQUEST]);
-        DB::insert('insert into spells (level, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('level'), NEXTREQUEST]);
-        DB::insert('insert into spells (type, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('type'), NEXTREQUEST]);
-        DB::insert('insert into spells (castingtime, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('castingtime'), NEXTREQUEST]);
-        DB::insert('insert into spells (components, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('components'), NEXTREQUEST]);
-        DB::insert('insert into spells (duration, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('duration'), NEXTREQUEST]);
-        DB::insert('insert into spells (range, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('range'), NEXTREQUEST]);
-        DB::insert('insert into spells (description, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('description'), NEXTREQUEST]);
-        DB::insert('insert into spells (ritual, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('ritual'), NEXTREQUEST]);
-        DB::insert('insert into spells (concentration, NEXTCOLUMNTABLE) values (?, ?)', [$resquest->input('concentration'), NEXTREQUEST]);
-        $spell = Spell::create();
-        $spell -> classes($class)->attach('api/spell');
+        //$classes = SpellClass::find($request['classes'])->get();
+        //$spell -> classes($classes)->attach('api/spell');
         // foreach ($spell as $attr) {
         //     if ($attr == 'classes') {
         //         $tmp=explode (",", $row[$attr]);
