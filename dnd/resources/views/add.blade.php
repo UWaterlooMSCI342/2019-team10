@@ -122,7 +122,7 @@ body {
       <div class="col-sm-10">
 	  <label> <b>Non/Concentration:</b> </label>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="grid2" id="select1" value="option3" checked>
+          <input class="form-check-input" type="radio" name="grid2" id="select1" value="option3" checked $classes>
           <label class="form-check-label" for="gridRadios3">
             Concentration
           </label>
@@ -154,9 +154,7 @@ body {
        
   <div class="form-group row">
     <div class="col-sm-10" align="center">
-      <input type="submit" class="btn btn-danger">
       <a href="{{url('/api/spells')}}" class="btn btn-danger">ADD NEW SPELL</a>
-
     </div>
   </div>
   </body>
