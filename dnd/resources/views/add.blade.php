@@ -155,6 +155,8 @@ body {
   <div class="form-group row">
     <div class="col-sm-10" align="center">
       <input type="submit" class="btn btn-danger">
+      <a href="{{url('/api/spells')}}" class="btn btn-danger">ADD NEW SPELL</a>
+
     </div>
   </div>
   </body>

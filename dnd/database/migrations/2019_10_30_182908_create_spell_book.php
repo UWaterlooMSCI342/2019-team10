@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassTable extends Migration
+class CreateSpellBook extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateClassTable extends Migration
      */
     public function up()
     {
-        Schema::create('spell_classes', function (Blueprint $table) {
-            $table ->increments('class_id');
-            $table ->string ('class_name')->unique();
+        Schema::create('spell_books', function (Blueprint $table) {
+            $table->Increments('spell_book_id');
+            $table->string('name');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateClassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('spell_books');
     }
 }

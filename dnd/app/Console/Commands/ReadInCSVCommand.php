@@ -48,7 +48,7 @@ class ReadInCSVCommand extends Command
                 if ($attr == 'classes') {
                     $tmp=explode (",", $row[$attr]);
                     foreach ($tmp as $class) {
-                        $class = SpellClass::firstOrCreate(['class_name'=>$class]);
+                        $class = SpellClass::firstOrCreate(['class_name'=>trim($class)]);
                         array_push($spell_classes, $class);
                     }
                 } else {
@@ -56,9 +56,7 @@ class ReadInCSVCommand extends Command
                 }
             }
             $spell->save();
-            foreach($spell_classes as $class) {
-                $spell->classes()->attach($class, ['name' => $spell->name, 'class_name' => $class->class_name]);
-            }
+            $spell->addClasses($spell_classes);
         }
     }
 
