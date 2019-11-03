@@ -10,8 +10,6 @@
 </div>
 
 <div>
-
-	
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
         </div>
@@ -70,6 +68,13 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
   Advanced Filter
 </button>
+
+
+<div class="btn-group">                                         
+        <a href="{{url('/api/spellbooks')}}" class="btn btn-danger">View Spellbooks</a>
+  </div>
+
+
 </div>
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -140,12 +145,12 @@
             @foreach($spells as $spell)
                 <tr>
                     <td>{{$spell -> level}}</td>
-                    <!-- <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td> -->
+                    <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
                     <td>{{$spell -> formattedClasses()}}</td>
                     <td>{{$spell -> ritual}}</td>
 					<td>{{$spell -> concentration}}</td>
                     <td>{{$spell -> school}}</td>
-                    <!-- <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn">Delete</a></td> -->
+                    <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn">Delete</a></td>
                 </tr>
             @endforeach
         </tbody>
