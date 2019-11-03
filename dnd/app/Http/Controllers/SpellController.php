@@ -50,7 +50,7 @@ class SpellController extends Controller
     }
 
     public function filter($filterName, $filter) {
-	    spells = Spell::query();
+	    $spells = Spell::query();
       if ($filterName != "class") {
         $filter = str_replace ('%20', " ", $filter);
         $spells = Spell::where($filterName, $filter);
