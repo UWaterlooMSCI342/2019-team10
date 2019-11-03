@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Spell;
 use App\SpellClass;
 use Illuminate\Http\Request;
+use App\SpellBook;
 use League\Csv\Reader;
 use Illuminate\Support\Facades\DB;
 class SpellController extends Controller
@@ -21,13 +22,15 @@ class SpellController extends Controller
 		$ritual = Spell::select('ritual')->distinct()->get();
 		$classes = SpellClass::select('class_name','class_id')->distinct('class_name')->get();
 		$school = Spell::select('school')->distinct()->get();
-		$spells= $spells->sortBy('level');
-		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
+        $spells= $spells->sortBy('level');
+        $spellbooks = SpellBook::all();
+		return ['spellbooks'=>$spellbooks,'spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
 	}
     public function index()
     {
         $spells = Spell::all();
         return view('spells', $this->getFilterValues($spells));
+
     }
 
 	public function add()
