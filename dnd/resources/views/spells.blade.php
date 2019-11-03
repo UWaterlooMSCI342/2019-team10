@@ -17,7 +17,7 @@
     </div>
 	
     <div class="btn-group">                                         
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($levels as $level) 

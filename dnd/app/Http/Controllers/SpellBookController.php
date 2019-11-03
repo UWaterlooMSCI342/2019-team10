@@ -24,8 +24,10 @@ public function viewSpellBook () {
         $name = SpellBook::select('name')->get();
         $spell_book_id=SpellBook::select('spell_book_id')->get();
         return view('spellBook', ['name'=>$name, 'spell_book_id'=>$spell_book_id]);
-    public function addSpells(Request $request) {
 
+}
+
+public function addSpells(Request $request) {
         $spellIds = $request->input("spells");
         $spells = Spell::query()->whereIn("spell_id", $spellIds)->get();
         $newSpellbookName = trim($request ->input("newSpellbookName"));
@@ -37,5 +39,4 @@ public function viewSpellBook () {
         }
         return redirect(url("api/spells"));
     }
-}
 }

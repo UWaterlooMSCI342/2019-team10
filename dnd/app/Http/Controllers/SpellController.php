@@ -22,8 +22,9 @@ class SpellController extends Controller
 		$ritual = Spell::select('ritual')->distinct()->get();
 		$classes = SpellClass::select('class_name','class_id')->distinct('class_name')->get();
 		$school = Spell::select('school')->distinct()->get();
-		$spells= $spells->sortBy('level');
-		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
+        $spells= $spells->sortBy('level');
+        $spellbooks = SpellBook::all();
+		return ['spellbooks'=>$spellbooks,'spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
 	}
     public function index()
     {
@@ -52,7 +53,7 @@ class SpellController extends Controller
     }
 
     public function filter($filterName, $filter) {
-	    spells = Spell::query();
+	    $spells = Spell::query();
       if ($filterName != "class") {
         $filter = str_replace ('%20', " ", $filter);
         $spells = Spell::where($filterName, $filter);
