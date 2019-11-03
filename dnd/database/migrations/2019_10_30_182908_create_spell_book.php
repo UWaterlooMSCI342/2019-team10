@@ -15,7 +15,7 @@ class CreateSpellBook extends Migration
     {
         Schema::create('spell_books', function (Blueprint $table) {
             $table->Increments('spell_book_id');
-            $table->string('name');
+            $table->string('name')->unique();
         });
     }
 
