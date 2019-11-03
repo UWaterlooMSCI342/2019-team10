@@ -49,18 +49,17 @@ class SpellController extends Controller
         return view('spelldetails',['spell' => $spell]);
     }
 
-
     public function filter($filterName, $filter) {
-	$spells = Spell::query();
-        if ($filterName != "class") {
-            $filter = str_replace ('%20', " ", $filter);
-            $spells = Spell::where($filterName, $filter);
-            return view('spells', $this->getFilterValues($spells->get()));
-        } else {
-			$spell_ids = DB::table('spell_spell_class')
-			->select('spell_id')->where('class_id',$filter)->pluck('spell_id')->all();
-			$spells = $spells->whereIn('spell_id',$spell_ids);
-            return view('spells', $this->getFilterValues($spells->get()));
+	    spells = Spell::query();
+      if ($filterName != "class") {
+        $filter = str_replace ('%20', " ", $filter);
+        $spells = Spell::where($filterName, $filter);
+        return view('spells', $this->getFilterValues($spells->get()));
+      } else {
+			  $spell_ids = DB::table('spell_spell_class')
+			  ->select('spell_id')->where('class_id',$filter)->pluck('spell_id')->all();
+			  $spells = $spells->whereIn('spell_id',$spell_ids);
+        return view('spells', $this->getFilterValues($spells->get()));
         }
     }
 public function multifilter(Request $request){
