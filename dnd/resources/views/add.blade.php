@@ -100,13 +100,13 @@ body {
       <div class="col-sm-10">
 	  <label> <b>Non/Ritual:</b> </label>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="grid1" id="select1" value="option3" checked $ritual> 
+          <input class="form-check-input" type="radio" name="ritual" id="select1" value="ritual" checked $ritual> 
           <label class="form-check-label" for="gridRadios3">
             Ritual
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="grid1" id="select2" value="option4" $nonritual>
+          <input class="form-check-input" type="radio" name="ritual" id="select2" value="non-ritual" $ritual>
           <label class="form-check-label" for="gridRadios4">
             Non-Ritual
           </label>
@@ -122,13 +122,13 @@ body {
       <div class="col-sm-10">
 	  <label> <b>Non/Concentration:</b> </label>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="grid2" id="select1" value="option3" checked $concentration>
+          <input class="form-check-input" type="radio" name="concentration" id="select1" value="concentration" checked $concentration>
           <label class="form-check-label" for="gridRadios3">
             Concentration
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="grid2" id="select2" value="option4" $nonconcentration>
+          <input class="form-check-input" type="radio" name="concentration" id="select2" value="non-concentration" $concentration>
           <label class="form-check-label" for="gridRadios4">
             Non-Concentration
           </label>
@@ -145,7 +145,7 @@ body {
 	<br>@foreach ($classes as $class)
 	<label for="inlineCheckbox1"> {{$class }}   </label>
 	   <div class="form-check form-check-inline">
-                        <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1" $classes>
+                        <input  type="checkbox" class="styled" id="inlineCheckbox1" $_POST[$classes]>
                         
                     </div>
 	 @endforeach

@@ -5,7 +5,6 @@ use App\Spell;
 use App\SpellClass;
 use Illuminate\Http\Request;
 use League\Csv\Reader;
-use Illuminate\Support\Facades\DB;
 class SpellController extends Controller
 {
     /**
@@ -51,38 +50,28 @@ class SpellController extends Controller
 
     public function NewSave(Request $request){
         $spell = new Spell;
-        //$class = SpellClass::find('classe_id');
-        $spell->name='spellname';
-        $spell->level=(int)'level'; 
-        $spell->school='type'; 
-        $spell->casting_time='castingtime'; 
-        $spell->components='components'; 
-        $spell->duration='duration'; 
-        $spell->range='range'; 
-        $spell->description='description'; 
-        $spell->ritual='ritual'; 
-        $spell->concentration='concentration'; 
-        //$classes->classes='classes'; 
-        $request->input('spellname', (int)'level', 'type', 'castingtime', 'components', 'duration','range', 'description', 'ritual', 'concentration', 'classes');
+        //$class = SpellClass::find($request->input('classes'));
+        $spell->name=$request->input('spellname');
+        $spell->level=$request->input('level'); 
+        $spell->school=$request->input('type'); 
+        $spell->casting_time=$request->input('castingtime'); 
+        $spell->components=$request->input('components'); 
+        $spell->duration=$request->input('duration'); 
+        $spell->range=$request->input('range'); 
+        $spell->description=$request->input('description'); 
+        $spell->ritual=$request->input('ritual'); 
+        $spell->concentration=$request->input('concentration'); 
+        //$cls->classes=$request->input('classes'); 
         $spell->save();
         //$classes = SpellClass::find($request['classes'])->get();
-        //$spell -> classes($classes)->attach('api/spell');
-        // foreach ($spell as $attr) {
-        //     if ($attr == 'classes') {
-        //         $tmp=explode (",", $row[$attr]);
-        //         foreach ($tmp as $class) {
-        //             $class = SpellClass::firstOrCreate(['class_name'=>$class]);
-        //             array_push($spell_classes, $class);
-        //         }
-        //     } else {
-        //         $spell->$attr=$row[$attr];
-        //     }
-        // }
-        //     $spell->save();
-        //     foreach($spell_classes as $class) {
-        //         $spell->classes()->attach($class, ['name' => $spell->name, 'class_name' => $class->class_name]);
-        //     }
+        // $class -> spells()->attach('api/spell');
+        //$class -> spells('spell_id')->attach('class_id');
+
+            // foreach($cls as $classes) {
+            //     $spell->classes()->attach($classes, ['name' => $spell->name, 'class_name' => $classes->class_name]);
+            // }
         //$spell->ManyToMany(Spell::class);
+        //$this->belongsToMany(Spell::class);
        // return redirect(url("api/spells"));
        return $request;
     }
