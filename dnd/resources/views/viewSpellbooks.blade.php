@@ -18,7 +18,7 @@
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
         @foreach($name as $name) 
-        <a class="dropdown-item" href="{{url('/api/SpellBook/filter/spell_book_id/' . $name->name)}}"> {{$name->name}}</a>
+        <a class="dropdown-item" href="#"> {{$name->name}}</a>
         @endforeach
         </div>
     </div>
