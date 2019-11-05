@@ -33,109 +33,83 @@ body {
 	
   <div class="form-group row">
 
-  <!-- creating variables -->
-
-  <!-- $spellname = config('app.spellname');
-  $level = config('app.level');
-  $type = config('app.Type');
-  $castingtime = config('app.castingtime');
-  $components = config('app.components');
-  $duration = config('app.duration');
-  $range = config('app.range');
-  $description = config('app.description'); -->
   
   <div class="col-sm-10">
 	<label> <b>Spell Name:</b> </label>
-      <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name" $spellname>
+      <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name" >
     </div>
 	</div>
 	<div class="form-group row">
 	    <div class="col-sm-10">
 	<label> <b>Level:</b> </label>
-      <input type="level" name="level" class="form-control" id="level" placeholder="Level" $level>
+      <input type="level" name="level" class="form-control" id="level" placeholder="Level" >
     </div>
 	</div>
 	
 	  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Type:</b> </label>
-      <input type="type" name="type" class="form-control" id="type" placeholder="Type" $type>
+      <input type="type" name="type" class="form-control" id="type" placeholder="Type" >
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Casting Time:</b> </label>
-      <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Casting Time" $castingtime>
+      <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Casting Time" >
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Components:</b> </label>
-      <input type="components" name="components" class="form-control" id="components" placeholder="Components" $components>
+      <input type="components" name="components" class="form-control" id="components" placeholder="Components" >
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Duration:</b> </label>
-      <input type="duration" name="duration" class="form-control" id="duration" placeholder="Duration" $duration>
+      <input type="duration" name="duration" class="form-control" id="duration" placeholder="Duration" >
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Range</b> </label>
-      <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Range" $range>
+      <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Range" >
     </div>
 	</div>
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Description:</b> </label>
-      <input type="description" name="description" class="form-control" id="description" placeholder="Description" $description> 
+      <input type="description" name="description" class="form-control" id="description" placeholder="Description" > 
     </div>
 	</div>
 
 
     <fieldset class="form-group">
-    <div class="row">
-	
       <div class="col-sm-10">
 	  <label> <b>Non/Ritual:</b> </label>
+        @foreach($rituals as $ritual)
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="ritual" id="select1" value="ritual" checked $ritual> 
+          <input class="form-check-input" type="radio" name="ritual" id="select1" value="{{$ritual->ritual}}" checked > 
           <label class="form-check-label" for="gridRadios3">
-            Ritual
+            {{$ritual->ritual}}
           </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="ritual" id="select2" value="non-ritual" $ritual>
-          <label class="form-check-label" for="gridRadios4">
-            Non-Ritual
-          </label>
-        </div>
-
+      @endforeach
       </div>
-    </div>
   </fieldset>
   
     <fieldset class="form-group">
-    <div class="row">
-	
       <div class="col-sm-10">
 	  <label> <b>Non/Concentration:</b> </label>
+        @foreach($concentrations as $concentration)
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="concentration" id="select1" value="concentration" checked $concentration>
+          <input class="form-check-input" type="radio" name="concentration" id="select1" value="{{$concentration->concentration}}" checked >
           <label class="form-check-label" for="gridRadios3">
-            Concentration
+            {{$concentration->concentration}}
           </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="concentration" id="select2" value="non-concentration" $concentration>
-          <label class="form-check-label" for="gridRadios4">
-            Non-Concentration
-          </label>
-        </div>
-
+      @endforeach
       </div>
-    </div>
   </fieldset>
   
   <div class="form-group row">
@@ -143,13 +117,13 @@ body {
     <div class="col-sm-10">
 	<label> <b>Select All Classes That Apply:</b> </label>
 	<br>@foreach ($classes as $class)
-	<label for="inlineCheckbox1"> {{$class }}   </label>
+	<label for="inlineCheckbox1"> {{$class->class_name}}  </label>
 	   <div class="form-check form-check-inline">
-                        <input  type="checkbox" class="styled" id="inlineCheckbox1" $_POST[$classes]>
-                        
-                    </div>
-	 @endforeach
-    </div>
+                      <input  type="checkbox" name="classes[]" class="form-check-input" value="{{$class->class_id}}" id="class">
+     </div>
+     
+	   @endforeach
+  </div>
   </div>
        
   <div class="form-group row">
