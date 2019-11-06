@@ -23,7 +23,7 @@ $router->group(['prefix'=>'api'], function() use($router){
     $router->post('/spell', 'SpellController@NewSave');
     $router->get('/spell/detail/{id}', 'SpellController@spellDetails');
     $router->get('/spell/filter/{filterName}/{filter}', 'SpellController@filter');    
-    $router->get('/spellbook', 'SpellBookController@viewSpellBook');
+    $router->get('/spellbooks', 'SpellBookController@viewSpellBook');
 
     $router->post('/spellbook/add', 'SpellBookController@addSpells');
 });
