@@ -36,7 +36,7 @@ class SpellController extends Controller
         $classes=SpellClass::select('class_name','class_id')->get();
         $level = Spell::select('level')->distinct()->get();
         $school = Spell::select('school')->distinct()->get();
-        return view('add',['classes' => $classes, 'levels'=> $level] , $this->getFilterValues());
+        return view('add',['classes' => $classes, 'levels'=> $level->sortBy('level'), 'schools' => $school] , $this->getFilterValues());
     }
 
     public function dlt($spellId){
