@@ -14,9 +14,8 @@
 	
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
-    </div>
-	
-    <div class="btn-group">                                         
+        </div>
+<div class="btn-group">                                         
         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
@@ -120,47 +119,41 @@
     </div>
   </div>
 </div>
+    
+
 
 <br/>
-<form action="{{url('/api/spellbook/add')}}" method="POST">
-    <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
-        <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal"> Add to Spellbook </a>
-    </div>
+<div style="border:3px solid black; height:400px;overflow:auto;">
+    <table class="table table-inverse table-dark">
+        <thead>
+            <tr>
+                <th scope = "col">Level</th>
+                <th scope = "col">Name</th>
+                <th scope = "col">Class</th>
+                <th scope = "col">Ritual</th>
+				<th scope = "col">Concentration</th>
+                <th scope = "col">School</th>
+            </tr>
+        </thead>
+        <tbody>
 
-    <div style="height:400px;overflow:auto;">
-        <table class="table table-inverse table-dark">
-            <thead>
+            @foreach($spells as $spell)
                 <tr>
-                    <th scope = "col">Level</th>
-                    <th scope = "col">Name</th>
-                    <th scope = "col">Class</th>
-                    <th scope = "col">Component</th>
-                    <th scope = "col">School</th>
-                    <th scope = "col">Delete</th>
-                    <th scope = "col">Add to Spellbook</th>
+                    <td>{{$spell -> level}}</td>
+                    <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
+                    <td>{{$spell -> formattedClasses()}}</td>
+                    <td>{{$spell -> ritual}}</td>
+					<td>{{$spell -> concentration}}</td>
+                    <td>{{$spell -> school}}</td>
+                    <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn">Delete</a></td>
                 </tr>
-            </thead>
-            <tbody>
+            @endforeach
+        </tbody>
+		
+    </table>
+	
 
-                @foreach($spells as $spell)
-                    <tr>
-                        <td>{{$spell -> level}}</td>
-                        <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
-                        <td>{{$spell -> formattedClasses()}}</td>
-                        <td>{{$spell -> components}}</td>
-                        <td>{{$spell -> school}}</td>
-                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
-                        <td style="text-align:center;">
-                            <div class="form-check" >
-                                <input type="checkbox" name="spells[]" class="form-check-input" value="{{$spell->spell_id}}" id="spell" style="width:20px;height:20px;">
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    @include("spellbook", ["spellbook" => $spellbooks])
-</form>
+	
+</div>
 </body>
 @endsection
