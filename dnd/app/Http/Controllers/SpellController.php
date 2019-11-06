@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Spell;
 use App\SpellClass;
 use Illuminate\Http\Request;
+use App\SpellBook;
 use League\Csv\Reader;
 class SpellController extends Controller
 {
@@ -20,6 +21,7 @@ class SpellController extends Controller
 		$ritual = Spell::select('ritual')->distinct()->get();
 		$classes = SpellClass::select('class_name','class_id')->distinct('class_name')->get();
         $school = Spell::select('school')->distinct()->get();
+        $spellbooks = SpellBook::all();
         if(!empty($spells)){
             $spells= $spells->sortBy('level');
         }
@@ -29,6 +31,7 @@ class SpellController extends Controller
     {
         $spells = Spell::all();
         return view('spells', $this->getFilterValues($spells));
+
     }
 
 	public function add()
@@ -52,6 +55,7 @@ class SpellController extends Controller
         return view('spelldetails',['spell' => $spell]);
     }
 
+
     public function NewSave(Request $request){
         $spell = new Spell;
         $spell->name=$request->input('spellname');
@@ -71,16 +75,16 @@ class SpellController extends Controller
     }
 
     public function filter($filterName, $filter) {
-	$spells = Spell::query();
-        if ($filterName != "class") {
-            $filter = str_replace ('%20', " ", $filter);
-            $spells = Spell::where($filterName, $filter);
-            return view('spells', $this->getFilterValues($spells->get()));
-        } else {
-			$spell_ids = DB::table('spell_spell_class')
-			->select('spell_id')->where('class_id',$filter)->pluck('spell_id')->all();
-			$spells = $spells->whereIn('spell_id',$spell_ids);
-            return view('spells', $this->getFilterValues($spells->get()));
+	    $spells = Spell::query();
+      if ($filterName != "class") {
+        $filter = str_replace ('%20', " ", $filter);
+        $spells = Spell::where($filterName, $filter);
+        return view('spells', $this->getFilterValues($spells->get()));
+      } else {
+			  $spell_ids = DB::table('spell_spell_class')
+			  ->select('spell_id')->where('class_id',$filter)->pluck('spell_id')->all();
+			  $spells = $spells->whereIn('spell_id',$spell_ids);
+        return view('spells', $this->getFilterValues($spells->get()));
         }
     }
 public function multifilter(Request $request){
