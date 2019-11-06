@@ -11,22 +11,23 @@ class SpellBook extends DndModel
     protected $primaryKey = 'spell_book_id';
     public $incrementing = true;
     protected $fillable = ['name'];
-    public static function newWith($name, $spells) {
-        $spellBook = $this->create($name);
-        foreach($spells as $spell) {
-            $spellBook->spells()->attach($spell, ['spell_book_id' => $spellBook->spell_book_id, 'spell_id' => $spell->spell_id]);
-        }
+
+    public static function addToNewOrExisting($name, $spells) {
+        $spellBook = SpellBook::firstOrCreate(["name"=>$name]);
+        $spellBook = SpellBook::addSpells($spells, $spellBook);
         return $spellBook;
     }
 
     public function spells()
     {
-        return $this->belongsToMany(Spell::class);
+        return $this->belongsToMany(Spell::class, "spell_books_spells", "spell_book_id", "spell_id");
     }
-
-    public function addSpells($spells) {
+    public static function addSpells($spells, $spellBook) {
         foreach($spells as $spell) {
-            $this->spells()->attach($spell, ['spell_book_id' => $this->spell_book_id, 'spell_id' => $spell->spell_id]);
+            if(!$spellBook->spells->contains($spell->spell_id)){
+                $spellBook->spells()->attach($spell, ['spell_book_id' => $spellBook->spell_book_id, 'spell_id' => $spell->spell_id]);
+            }
         }
+        return $spellBook;
     }
 }
