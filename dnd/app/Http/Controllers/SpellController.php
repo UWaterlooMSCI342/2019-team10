@@ -14,15 +14,13 @@ class SpellController extends Controller
      */
 
     // public function 
-	private function getFilterValues($spells=[]){
+	private function getFilterValues($spells){
 		$level = Spell::select('level')->distinct()->get();
 		$concentration = Spell::select('concentration')->distinct()->get();
 		$ritual = Spell::select('ritual')->distinct()->get();
 		$classes = SpellClass::select('class_name','class_id')->distinct('class_name')->get();
-        $school = Spell::select('school')->distinct()->get();
-        if(!empty($spells)){
-            $spells= $spells->sortBy('level');
-        }
+		$school = Spell::select('school')->distinct()->get();
+		$spells= $spells->sortBy('level');
 		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
 	}
     public function index()
@@ -33,10 +31,15 @@ class SpellController extends Controller
 
 	public function add()
     {
+<<<<<<< HEAD
         $classes=SpellClass::select('class_name','class_id')->get();
         $level = Spell::select('level')->distinct()->get();
         $school = Spell::select('school')->distinct()->get();
         return view('add',['classes' => $classes, 'levels'=> $level->sortBy('level'), 'schools' => $school] , $this->getFilterValues());
+=======
+		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];
+        return view('add',['classes' => $classes]);
+>>>>>>> parent of 678a10a... Working code!
     }
 
     public function dlt($spellId){
@@ -54,6 +57,7 @@ class SpellController extends Controller
 
     public function NewSave(Request $request){
         $spell = new Spell;
+        //$class = SpellClass::find($request->input('classes'));
         $spell->name=$request->input('spellname');
         $spell->level=$request->input('level'); 
         $spell->school=$request->input('type'); 
@@ -64,10 +68,19 @@ class SpellController extends Controller
         $spell->description=$request->input('description'); 
         $spell->ritual=$request->input('ritual'); 
         $spell->concentration=$request->input('concentration'); 
-        $classes=SpellClass::query()->whereIn("class_id",$request->input('classes'))->get();
+        //$cls->classes=$request->input('classes'); 
         $spell->save();
-        $spell->addClasses($classes);
-       return redirect(url("api/spells"));
+        //$classes = SpellClass::find($request['classes'])->get();
+        // $class -> spells()->attach('api/spell');
+        //$class -> spells('spell_id')->attach('class_id');
+
+            // foreach($cls as $classes) {
+            //     $spell->classes()->attach($classes, ['name' => $spell->name, 'class_name' => $classes->class_name]);
+            // }
+        //$spell->ManyToMany(Spell::class);
+        //$this->belongsToMany(Spell::class);
+       // return redirect(url("api/spells"));
+       return $request;
     }
 
     public function filter($filterName, $filter) {
