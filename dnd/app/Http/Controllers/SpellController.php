@@ -87,7 +87,7 @@ class SpellController extends Controller
 			  $spell_ids = DB::table('spell_spell_class')
 			  ->select('spell_id')->where('class_id',$filter)->pluck('spell_id')->all();
 			  $spells = $spells->whereIn('spell_id',$spell_ids);
-        return view('spells', $this->getFilterValues($spells->get()));
+            return view('spells', $this->getFilterValues($spells->get()));
         }
     }
 public function multifilter(Request $request){
