@@ -3,6 +3,10 @@
 @section('title', 'Page Title')
 
 @section('content')
+<head>
+<script src="jquery-3.4.1.min.js"></script>
+</head>
+
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
@@ -129,14 +133,13 @@
 <br/>
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
-        <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal"> Add to Spellbook </a>
+        <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal" value = "addToSpell"> Add to Spellbook </a>
     </div>
 
     <div style="height:400px;overflow:auto;">
         <table class="table table-inverse table-dark">
             <thead>
                 <tr>
-
                     <th scope = "col">Level</th>
                     <th scope = "col">Name</th>
                     <th scope = "col">Class</th>
@@ -171,3 +174,4 @@
 </form>
 </body>
 @endsection
+
