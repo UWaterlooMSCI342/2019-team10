@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 use App\Spell;
 use App\SpellClass;
 use Illuminate\Http\Request;
