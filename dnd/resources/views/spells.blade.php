@@ -3,11 +3,32 @@
 @section('title', 'Page Title')
 
 @section('content')
+
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
     <a href="{{url('/api/spells')}}"><h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1></a>
 </div>
+
+
+<script>
+    var checker = 0 
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked")== true){
+                checker = checker + 1; 
+            }
+            else if($(this).prop("checked")==false){
+                checker = checker -1; 
+            } 
+            if(checker > 0){
+                $("#addToSpellbook").attr("disabled", false);
+            }else{
+                $("#addToSpellbook").attr("disabled", true);
+            }   
+        });
+    });
+</script>
 
 <div>
 
@@ -138,14 +159,13 @@
 <br/>
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
-        <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal"> Add to Spellbook </a>
+        <button type = "button" href = "#" style = "color: white;" id = "addToSpellbook" class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal" value = "addToSpell" disabled = "disabled"> Add to Spellbook </button>
     </div>
 
     <div style="height:400px;overflow:auto;">
-        <table class="table table-striped table-dark">
+        <table class="table table-striped table-dark w-auto" style = "font-size: 14px">
             <thead>
                 <tr>
-
                     <th scope = "col">Level</th>
                     <th scope = "col">Name</th>
                     <th scope = "col">Class</th>
@@ -167,10 +187,10 @@
                         <td>{{$spell -> ritual}}</td>
                         <td>{{$spell -> concentration}}</td>
                         <td>{{$spell -> school}}</td>
-                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
+                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary" id = "delete_button">Delete</a></td>
                         <td style="text-align:center;">
                             <div class="form-check" >
-                                <input type="checkbox" name="spells[]" class="form-check-input" value="{{$spell->spell_id}}" id="spell" style="width:20px;height:20px;">
+                                <input onclick=getValue() type="checkbox" name="spells[]" class="checks" value="{{$spell->spell_id}}" style="width:20px;height:20px;">
                             </div>
                         </td>
                     </tr>
