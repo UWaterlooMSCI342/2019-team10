@@ -10,12 +10,24 @@
     <a href="{{url('/api/spells')}}"><h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1></a>
 </div>
 
+
 <script>
-   $(document).ready(function(){
-         $(".checkbox").mouseup(function(){
-            alert($('.checkbox :checked').size());
-  });
-});
+    var checker = 0 
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked")== true){
+                checker = checker + 1; 
+            }
+            else if($(this).prop("checked")==false){
+                checker = checker -1; 
+            } 
+            if(checker > 0){
+                $("#addToSpellbook").attr("disabled", false);
+            }else{
+                $("#addToSpellbook").attr("disabled", true);
+            }   
+        });
+    });
 </script>
 
 <div>
@@ -138,7 +150,7 @@
 <br/>
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
-        <a style = "color: white;" id = "addToSpellbook" class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal" value = "addToSpell"> Add to Spellbook </a>
+        <button type = "button" href = "#" style = "color: white;" id = "addToSpellbook" class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal" value = "addToSpell" disabled = "disabled"> Add to Spellbook </button>
     </div>
 
     <div style="height:400px;overflow:auto;">
@@ -167,7 +179,7 @@
                         <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary" id = "delete_button">Delete</a></td>
                         <td style="text-align:center;">
                             <div class="form-check" >
-                                <input type="checkbox" name="spells[]" class="checkbox" value="{{$spell->spell_id}}" style="width:20px;height:20px;">
+                                <input onclick=getValue() type="checkbox" name="spells[]" class="checks" value="{{$spell->spell_id}}" style="width:20px;height:20px;">
                             </div>
                         </td>
                     </tr>
