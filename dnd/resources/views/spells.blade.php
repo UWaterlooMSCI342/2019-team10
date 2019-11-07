@@ -10,11 +10,12 @@
 </div>
 
 <div>
-    <div class="btn-group">                                         
-        <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
-    </div>
+
 	
     <div class="btn-group">                                         
+        <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
+        </div>
+<div class="btn-group">                                         
         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
         <span class = "caret"></span></button>
         <div class="dropdown-menu">
@@ -69,14 +70,13 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
   Advanced Filter
 </button>
-
-
 <div class="btn-group">                                         
         <a href="{{url('/api/spellbooks')}}" class="btn btn-danger">View Spellbooks</a>
   </div>
-
-
+  
 </div>
+
+
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -89,28 +89,37 @@
       </div>
       <div class="modal-body">
         <form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
+<label><b>Level:</b></label>
 <select name = "level" class = "browser-default custom-select custom-select-lg mb-3">
+		<option selected value = "Any"> -- Any -- </option>
 		@foreach($levels as $level) 
 		<option value = "{{($level->level)}}">{{($level->level)}}</option>
 		@endforeach
     </select>
-
+<label><b>Class:</b></label>
  <select name = "class" class = "browser-default custom-select custom-select-lg mb-3">
+		<option selected value = "Any"> -- Any -- </option>
 		@foreach($classes as $class) 
 		<option value = "{{($class->class_id)}}">{{($class->class_name)}}</option>
 		@endforeach
     </select>
+<label><b>Ritual:</b></label>
 	<select name = "ritual" class = "browser-default custom-select custom-select-lg mb-3">
+	<option selected value = "Any"> -- Any -- </option>
 		@foreach($rituals as $ritual) 
 		<option value = "{{($ritual->ritual)}}">{{($ritual->ritual)}}</option>
 		@endforeach
     </select>
+<label><b>Concentration:</b></label>
 	<select name = "concentration" class = "browser-default custom-select custom-select-lg mb-3">
+	<option selected value = "Any"> -- Any -- </option>
 		@foreach($concentrations as $concentration) 
 		<option value = "{{($concentration->concentration)}}">{{($concentration->concentration)}}</option>
 		@endforeach
     </select>
+<label><b>School:</b></label>
 	<select name = "school" class = "browser-default custom-select custom-select-lg mb-3">
+	<option selected value = "Any"> -- Any -- </option>
 		@foreach($schools as $school) 
 		<option value = "{{($school->school)}}">{{($school->school)}}</option>
 		@endforeach
@@ -119,7 +128,7 @@
       </div>
       <div class="modal-footer">
 	  <input type="submit" value="Submit" class="btn btn-success">
-      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal" href="{{url('/api/spells')}}">Close</button>
       </div>
 </form>
     </div>
@@ -127,7 +136,6 @@
 </div>
 
 <br/>
-
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
         <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal"> Add to Spellbook </a>
@@ -137,6 +145,7 @@
         <table class="table table-inverse table-dark">
             <thead>
                 <tr>
+
                     <th scope = "col">Level</th>
                     <th scope = "col">Name</th>
                     <th scope = "col">Class</th>
@@ -144,9 +153,11 @@
                     <th scope = "col">School</th>
                     <th scope = "col">Delete</th>
                     <th scope = "col">Add to Spellbook</th>
+
                 </tr>
             </thead>
             <tbody>
+
                 @foreach($spells as $spell)
                     <tr>
                         <td>{{$spell -> level}}</td>

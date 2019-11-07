@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 use App\Spell;
 use App\SpellClass;
 use Illuminate\Http\Request;
@@ -91,16 +92,24 @@ class SpellController extends Controller
     }
 public function multifilter(Request $request){
 	$spells = Spell::query();
-
-			$spell_ids = DB::table('spell_spell_class')
-			->select('spell_id')->where('class_id',$request->input('class'))->pluck('spell_id')->all();
-			$spells = $spells->whereIn('spell_id',$spell_ids);
-			$spells = $spells->where('level',$request->input('level'));
-			$spells = $spells->where('concentration',$request->input('concentration'));
-			$spells = $spells->where('ritual',$request->input('ritual'));
-			$spells = $spells->where('school',$request->input('school'));
-		
-	
+	if ($request->input('level') != "Any"){
+		$spells = $spells->where('level',$request->input('level'));
+	}
+	if ($request->input('class') != "Any"){
+		$spell_ids = DB::table('spell_spell_class')
+		->select('spell_id')->where('class_id',$request->input('class'))->pluck('spell_id')->all();
+		$spells = $spells->whereIn('spell_id',$spell_ids);	
+	}
+	if ($request->input('ritual') != "Any"){
+		$spells = $spells->where('ritual',$request->input('ritual'));
+	}
+	if ($request->input('concentration') != "Any"){
+		$spells = $spells->where('concentration',$request->input('concentration'));
+	}
+	if ($request->input('school') != "Any"){
+		$spells = $spells->where('school',$request->input('school'));
+	}
+			
 	return view('spells', $this->getFilterValues($spells->get()));
 	
 }
