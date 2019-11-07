@@ -22,7 +22,7 @@ body {
 
 <div class="col-sm-10">
 <div style="background:#DCDCDC" class="jumbotron text-center">
-  <font color="#8B0000"><h1>Add New Spell Page</h1></font>
+  <font color="#8B0000"><h1>Add New Spell</h1></font>
 </div>
 </div>
 
@@ -30,62 +30,66 @@ body {
 
 <form action="{{url('/api/spell/')}}" method="POST">
 	
-  <div class="form-group row">
+  <div class="form-group">
+	    <label> <b>Spell Name</b> </label>
+      <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name"  >
+  </div>
 
-  
-  <div class="col-sm-10">
-	<label> <b>Spell Name:</b> </label>
-      <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name" >
-    </div>
-	</div>
-	<div class="form-group row">
-	    <div class="col-sm-10">
-	<label> <b>Level:</b> </label>
-      <input type="level" name="level" class="form-control" id="level" placeholder="Level" >
-    </div>
-	</div>
-	
-	  <div class="form-group row">
-    <div class="col-sm-10">
-	<label> <b>Type:</b> </label>
-      <input type="type" name="type" class="form-control" id="type" placeholder="Type" >
-    </div>
-	</div>
-		  <div class="form-group row">
-    <div class="col-sm-10">
-	<label> <b>Casting Time:</b> </label>
-      <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Casting Time" >
-    </div>
-	</div>
-		  <div class="form-group row">
-    <div class="col-sm-10">
-	<label> <b>Components:</b> </label>
-      <input type="components" name="components" class="form-control" id="components" placeholder="Components" >
-    </div>
-	</div>
-		  <div class="form-group row">
-    <div class="col-sm-10">
-	<label> <b>Duration:</b> </label>
-      <input type="duration" name="duration" class="form-control" id="duration" placeholder="Duration" >
-    </div>
-	</div>
-		  <div class="form-group row">
-    <div class="col-sm-10">
-	<label> <b>Range</b> </label>
-      <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Range" >
-    </div>
-	</div>
-		  <div class="form-group row">
-    <div class="col-sm-10">
-	<label> <b>Description:</b> </label>
-      <input type="description" name="description" class="form-control" id="description" placeholder="Description" > 
-    </div>
+  <div class="form-group">
+    <label><b>Level</b></label>
+      <select name = "level" placeholder="level" class = "browser-default-disabled custom-select custom-select-lg mb-3">
+      @foreach($levels as $level) 
+      <option value = "{{($level->level)}}">{{($level->level)}}</option>
+      @endforeach
+    </select>
+</div>
+
+<div class="form-group">
+    <label><b>School</b></label>
+    <select name = "type" aria-labelledby="dropdownMenuButton" class = "browser-default custom-select custom-select-lg mb-3">
+      @foreach($schools as $school) 
+      <option value = "{{($school->school)}}">{{($school->school)}}</option>
+      @endforeach
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label><b>Components</b></label>
+      <select name = "components" class = "browser-default custom-select custom-select-lg mb-3">
+      @foreach($components as $component) 
+      <option value = "{{($component->components)}}">{{($component->components)}}</option>
+      @endforeach
+    </select>
+  </div>
+    
+  <div class="form-group">
+	<label> <b>Casting Time</b></label>
+    <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: {{$castingtime}}"  >
+  </div>
+
+ <div class="form-group">
+	<label> <b>Duration</b> </label>
+    <input type="duration" name="duration" class="form-control" id="duration" placeholder="Ex: {{$duration}}"  >
 	</div>
 
+<div class="form-group">
+  <label> <b>Range</b> </label>
+    <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Ex: {{$duration}}"   >
+ </div>
+
+  <div class="form-group">
+      <label for="Description">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+  </div>
+
+  <div class="form-group">
+	    <label> <b>Materials</b> </label>
+      <input type="materials" name="materials" class="form-control" id="description" placeholder="Materials" > 
+    </div>
 
     <fieldset class="form-group">
       <div class="col-sm-10">
-	  <label> <b>Non/Ritual:</b> </label>
+	  <label> <b>Non/Ritual</b> </label>
         @foreach($rituals as $ritual)
         <div class="form-check">
           <input class="form-check-input" type="radio" name="ritual" id="select1" value="{{$ritual->ritual}}" checked > 
@@ -99,7 +103,7 @@ body {
   
     <fieldset class="form-group">
       <div class="col-sm-10">
-	  <label> <b>Non/Concentration:</b> </label>
+	  <label> <b>Non/Concentration</b> </label>
         @foreach($concentrations as $concentration)
         <div class="form-check">
           <input class="form-check-input" type="radio" name="concentration" id="select1" value="{{$concentration->concentration}}" checked >

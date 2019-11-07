@@ -110,6 +110,7 @@
       </div>
       <div class="modal-body">
         <form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
+        
 <label><b>Level:</b></label>
 <select name = "level" class = "browser-default custom-select custom-select-lg mb-3">
 		<option selected value = "Any"> -- Any -- </option>
