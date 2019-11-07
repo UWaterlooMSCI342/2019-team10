@@ -71,6 +71,10 @@
   Advanced Filter
 </button>
 </div>
+<div class="btn-group">                                         
+        <a href="{{url('/api/spellbooks')}}" class="btn btn-danger">View Spellbooks</a>
+  </div>
+
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
