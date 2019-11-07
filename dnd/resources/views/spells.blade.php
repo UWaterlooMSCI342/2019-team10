@@ -142,14 +142,15 @@
     </div>
 
     <div style="height:400px;overflow:auto;">
-        <table class="table table-inverse table-dark">
+        <table class="table table-striped table-dark">
             <thead>
                 <tr>
 
                     <th scope = "col">Level</th>
                     <th scope = "col">Name</th>
                     <th scope = "col">Class</th>
-                    <th scope = "col">Component</th>
+                    <th scope = "col">Ritual</th>
+                    <th scope = "col">Concentration</th>
                     <th scope = "col">School</th>
                     <th scope = "col">Delete</th>
                     <th scope = "col">Add to Spellbook</th>
@@ -163,7 +164,8 @@
                         <td>{{$spell -> level}}</td>
                         <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
                         <td>{{$spell -> formattedClasses()}}</td>
-                        <td>{{$spell -> components}}</td>
+                        <td>{{$spell -> ritual}}</td>
+                        <td>{{$spell -> concentration}}</td>
                         <td>{{$spell -> school}}</td>
                         <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
                         <td style="text-align:center;">
