@@ -39,25 +39,47 @@ body {
       <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name" >
     </div>
 	</div>
-	<div class="form-group row">
+	
+
+  <div class="btn-group">                                         
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($levels as $level) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/level/' . $level->level)}}"> {{($level->level)}}</a>
+        @endforeach
+   </div>
+
+  <!-- <div class="form-group row">
 	    <div class="col-sm-10">
 	<label> <b>Level:</b> </label>
       <input type="level" name="level" class="form-control" id="level" placeholder="Level" >
     </div>
-	</div>
+	</div> -->
 	
+  <div class="btn-group">                                         
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
+        <span class = "caret"></span></button>
+        <div class="dropdown-menu">
+        @foreach($schools as $school) 
+        <a class="dropdown-item" href="{{url('/api/spell/filter/school/' . $school->school)}}"> {{$school->school}}</a>
+        @endforeach
+        </div>
+  </div>
+
 	  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Type:</b> </label>
       <input type="type" name="type" class="form-control" id="type" placeholder="Type" >
     </div>
 	</div>
-		  <div class="form-group row">
+		  <!-- <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Casting Time:</b> </label>
       <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Casting Time" >
     </div>
-	</div>
+	</div> -->
+  
 		  <div class="form-group row">
     <div class="col-sm-10">
 	<label> <b>Components:</b> </label>
