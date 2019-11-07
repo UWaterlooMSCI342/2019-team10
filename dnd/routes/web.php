@@ -19,9 +19,11 @@ $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/add', 'SpellController@add');
     $router->get('/spell/{id}', 'SpellController@dlt');
 	$router->get('/new-spells', 'SpellController@addNewSpells');
+    $router->get('/spell/{id}', 'SpellController@dlt');
+    $router->post('/spell', 'SpellController@NewSave');
     $router->get('/spell/detail/{id}', 'SpellController@spellDetails');
     $router->get('/spell/filter/{filterName}/{filter}', 'SpellController@filter');    
+    $router->post('/spellbook', 'SpellBookController@addSpells');
     $router->get('/spellbooks', 'SpellBookController@viewSpellBook');
-
     $router->post('/spellbook/add', 'SpellBookController@addSpells');
 });

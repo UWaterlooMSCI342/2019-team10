@@ -6,7 +6,6 @@ use App\SpellClass;
 use Illuminate\Http\Request;
 use App\SpellBook;
 use League\Csv\Reader;
-use Illuminate\Support\Facades\DB;
 class SpellController extends Controller
 {
     /**
@@ -16,15 +15,18 @@ class SpellController extends Controller
      */
 
     // public function 
-	private function getFilterValues($spells){
+	private function getFilterValues($spells=[]){
 		$level = Spell::select('level')->distinct()->get();
 		$concentration = Spell::select('concentration')->distinct()->get();
 		$ritual = Spell::select('ritual')->distinct()->get();
 		$classes = SpellClass::select('class_name','class_id')->distinct('class_name')->get();
-		$school = Spell::select('school')->distinct()->get();
-        $spells= $spells->sortBy('level');
+
+        $school = Spell::select('school')->distinct()->get();
         $spellbooks = SpellBook::all();
-		return ['spellbooks'=>$spellbooks,'spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration];
+        if(!empty($spells)){
+            $spells= $spells->sortBy('level');
+        }
+		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration, 'spellbooks'=> $spellbooks];
 	}
     public function index()
     {
@@ -35,8 +37,10 @@ class SpellController extends Controller
 
 	public function add()
     {
-		$classes = ['Barbarian', 'Bard', 'Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Warlock','Wizard'];
-        return view('add',['classes' => $classes]);
+        $classes=SpellClass::select('class_name','class_id')->get();
+        $level = Spell::select('level')->distinct()->get();
+        $school = Spell::select('school')->distinct()->get();
+        return view('add',['classes' => $classes, 'levels'=> $level->sortBy('level'), 'schools' => $school] , $this->getFilterValues());
     }
 
     public function dlt($spellId){
@@ -50,6 +54,26 @@ class SpellController extends Controller
     {
         $spell = Spell::find($id);
         return view('spelldetails',['spell' => $spell]);
+    }
+
+
+    public function NewSave(Request $request){
+        $spell = new Spell;
+        $spell->name=$request->input('spellname');
+        $spell->level=$request->input('level'); 
+        $spell->school=$request->input('type'); 
+        $spell->casting_time=$request->input('castingtime'); 
+        $spell->components=$request->input('components'); 
+        $spell->duration=$request->input('duration'); 
+        $spell->range=$request->input('range'); 
+        $spell->description=$request->input('description'); 
+        $spell->ritual=$request->input('ritual'); 
+        $spell->concentration=$request->input('concentration'); 
+        $classes=SpellClass::query()->whereIn("class_id",$request->input('classes'))->get();
+        $spell->save();
+        $spell->addClasses($classes);
+    return redirect(url("api/spells"));
+ 
     }
 
     public function filter($filterName, $filter) {

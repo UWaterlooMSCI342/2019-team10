@@ -24,7 +24,6 @@ public function viewSpellBook () {
         $name = SpellBook::select('name')->get();
         $spell_book_id=SpellBook::select('spell_book_id')->get();
         return view('viewSpellbooks', ['name'=>$name, 'spell_book_id'=>$spell_book_id]);
-
 }
 
 public function addSpells(Request $request) {
