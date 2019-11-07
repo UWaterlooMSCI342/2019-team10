@@ -163,7 +163,7 @@
     </div>
 
     <div style="height:400px;overflow:auto;">
-        <table class="table table-striped table-dark">
+        <table class="table table-striped table-dark w-auto" style = "font-size: 14px">
             <thead>
                 <tr>
                     <th scope = "col">Level</th>
