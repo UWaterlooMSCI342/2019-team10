@@ -17,7 +17,7 @@
         <script>
             $(document).ready(function(){
             $("input").focus(function(){
-                $(this).css("background-color", "grey");
+                $(this).css("background-color", "D3D3D3");
             });
             $("input").blur(function(){
                 $(this).css("background-color", "white");
