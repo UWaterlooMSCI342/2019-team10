@@ -10,6 +10,11 @@
     <a href="{{url('/api/spells')}}"><h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1></a>
 </div>
 
+<script>
+    $(".form-check-input").hide();
+
+</script>
+
 <div>
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
@@ -130,7 +135,7 @@
 <br/>
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
-        <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal" value = "addToSpell"> Add to Spellbook </a>
+        <a style = "color: white;" id = "addToSpellbook" class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal" value = "addToSpell"> Add to Spellbook </a>
     </div>
 
     <div style="height:400px;overflow:auto;">

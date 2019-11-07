@@ -16,7 +16,6 @@ body {
 </style>
 </head>
 
-
 <body align = 'center'>
 
 <div class="col-sm-10">
