@@ -14,4 +14,14 @@
                 @yield('content')
             </div>
         </body>
+        <script>
+            $(document).ready(function(){
+            $("input").focus(function(){
+                $(this).css("background-color", "grey");
+            });
+            $("input").blur(function(){
+                $(this).css("background-color", "white");
+            });
+            });
+        </script>
 </html>
