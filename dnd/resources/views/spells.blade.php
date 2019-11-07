@@ -134,14 +134,11 @@
 </div>
     
 
-<br/>
-
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
         <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal"> Add to Spellbook </a>
     </div>
 
-<br/>
 <div height:400px;overflow:auto;">
     <table class="table table-inverse table-dark">
         <thead>
