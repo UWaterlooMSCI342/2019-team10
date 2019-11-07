@@ -11,8 +11,11 @@
 </div>
 
 <script>
-    $(".form-check-input").hide();
-
+   $(document).ready(function(){
+         $(".checkbox").mouseup(function(){
+            alert($('.checkbox :checked').size());
+  });
+});
 </script>
 
 <div>
@@ -172,10 +175,10 @@
                         <td>{{$spell -> ritual}}</td>
                         <td>{{$spell -> concentration}}</td>
                         <td>{{$spell -> school}}</td>
-                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
+                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary" id = "delete_button">Delete</a></td>
                         <td style="text-align:center;">
                             <div class="form-check" >
-                                <input type="checkbox" name="spells[]" class="form-check-input" value="{{$spell->spell_id}}" id="spell" style="width:20px;height:20px;">
+                                <input type="checkbox" name="spells[]" class="checkbox" value="{{$spell->spell_id}}" style="width:20px;height:20px;">
                             </div>
                         </td>
                     </tr>
