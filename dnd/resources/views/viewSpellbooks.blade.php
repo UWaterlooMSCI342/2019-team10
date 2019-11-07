@@ -8,7 +8,7 @@
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
-    <h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1>
+    <a href="{{url('/api/spells')}}"><h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1></a>
 </div>
 
 <div>
