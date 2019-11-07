@@ -19,11 +19,20 @@ class SpellBookController extends Controller
 
     // public function 
 
-public function viewSpellBook () {
-
-        $name = SpellBook::select('name')->get();
-        $spell_book_id=SpellBook::select('spell_book_id')->get();
-        return view('viewSpellbooks', ['name'=>$name, 'spell_book_id'=>$spell_book_id]);
+public function viewSpellBook ($id=null) {
+    $spells = [];
+    $spellBooks = SpellBook::all();
+    if ($id != null){
+        $spellBook = SpellBook::find($id);
+        if ($spellBook != null) {
+            $spells=$spellBook->spells;
+        }
+    } else {
+        if (!empty($spellBooks)) {
+            $spells = SpellBook::find($spellBooks[0]->spell_book_id)->spells;
+        }
+    }
+    return view('viewSpellbooks', ['spellbooks'=>$spellBooks, 'starting_spells'=>$spells]);
 }
 
 public function addSpells(Request $request) {
