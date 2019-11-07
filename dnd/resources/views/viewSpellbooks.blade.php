@@ -35,8 +35,10 @@
                 <th scope = "col">Class</th>
                 <th scope = "col">Component</th>
                 <th scope = "col">School</th>
+                <th scope = "col">Delete</th>
             </tr>
         </thead>
+
         @if (!empty($starting_spells))
         <tbody>
             @foreach($starting_spells as $spell)
@@ -46,11 +48,13 @@
                 <td>{{$spell -> formattedClasses()}}</td>
                 <td>{{$spell -> components}}</td>
                 <td>{{$spell -> school}}</td>
+                <td><a href="{{url('api/spellbook/' . $selected_spellbook->spell_book_id . '/delete/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
             </tr>
             @endforeach
         </tbody>
     </table>
     @else
+
     </table>
     <div style="display: inline-block; padding: 20px; height: 90px; width: 30%; text-align: center; background-color: #282828;">
         <font  size = "5"; color = #D30909><h4> No spells are added to this spellbook </h4></font>

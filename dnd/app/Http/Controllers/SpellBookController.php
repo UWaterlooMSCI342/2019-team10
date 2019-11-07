@@ -49,4 +49,9 @@ public function addSpells(Request $request) {
         }
         return redirect(url("api/spells"));
     }
+public function dltSpellInSpellBook($spellId,$spellBookId){
+        $spellBook = SpellBook::find($spellBookId);
+        $spellBook->spells()->detach($spellId);
+        return redirect(url("api/spellbooks/" .$spellBookId));
+    }
 }
