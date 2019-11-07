@@ -39,4 +39,10 @@ public function addSpells(Request $request) {
         }
         return redirect(url("api/spells"));
     }
+public function dlt($spellId){
+        $spell = Spell::find($spellId);
+        $spell->delete();
+        $spell->classes()->detach();
+        return redirect(url("api/spells"));
+    }
 }
