@@ -70,10 +70,12 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
   Advanced Filter
 </button>
-</div>
 <div class="btn-group">                                         
         <a href="{{url('/api/spellbooks')}}" class="btn btn-danger">View Spellbooks</a>
   </div>
+  
+</div>
+
 
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -132,17 +134,18 @@
     </div>
   </div>
 </div>
-    
 
+<br/>
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
         <a style = "color: white;"class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal"> Add to Spellbook </a>
     </div>
 
-<div height:400px;overflow:auto;">
-    <table class="table table-inverse table-dark">
-        <thead>
-            <tr>
+    <div style="height:400px;overflow:auto;">
+        <table class="table table-inverse table-dark">
+            <thead>
+                <tr>
+
                     <th scope = "col">Level</th>
                     <th scope = "col">Name</th>
                     <th scope = "col">Class</th>
@@ -150,9 +153,11 @@
                     <th scope = "col">School</th>
                     <th scope = "col">Delete</th>
                     <th scope = "col">Add to Spellbook</th>
+
                 </tr>
             </thead>
             <tbody>
+
                 @foreach($spells as $spell)
                     <tr>
                         <td>{{$spell -> level}}</td>
