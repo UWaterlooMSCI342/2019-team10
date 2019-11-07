@@ -38,7 +38,7 @@ public function addSpells(Request $request) {
         }
         return redirect(url("api/spells"));
     }
-public function dlt($spellId){
+public function dltSpellInSpellBook($spellId){
         $spell = Spell::find($spellId);
         $spell->SpellBook()->detach();
         return redirect(url("api/spellbooks"));
