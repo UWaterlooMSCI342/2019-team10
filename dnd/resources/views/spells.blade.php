@@ -3,9 +3,6 @@
 @section('title', 'Page Title')
 
 @section('content')
-<head>
-<script src="jquery-3.4.1.min.js"></script>
-</head>
 
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
@@ -174,4 +171,3 @@
 </form>
 </body>
 @endsection
-
