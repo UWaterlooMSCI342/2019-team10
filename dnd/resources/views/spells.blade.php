@@ -142,7 +142,7 @@
     </div>
 
 <br/>
-<div style="border:3px solid black; height:400px;overflow:auto;">
+<div height:400px;overflow:auto;">
     <table class="table table-inverse table-dark">
         <thead>
             <tr>
