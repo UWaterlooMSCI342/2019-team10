@@ -48,6 +48,7 @@
                 <td>{{$spell -> formattedClasses()}}</td>
                 <td>{{$spell -> components}}</td>
                 <td>{{$spell -> school}}</td>
+                <td><a href="{{url('api/spellbook/' . $selected_spellbook->spell_book_id . '/delete/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
             </tr>
             @endforeach
         </tbody>

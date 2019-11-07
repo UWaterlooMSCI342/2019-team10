@@ -25,6 +25,6 @@ $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/spell/filter/{filterName}/{filter}', 'SpellController@filter');    
     $router->get('/spellbooks/{id}', 'SpellBookController@viewSpellBook');
     $router->get('/spellbooks', 'SpellBookController@viewSpellBook');
-	$router->get('/spell/{id}', 'SpellBookController@dltSpellInSpellBook');
+	$router->get('/spellbook/{spellBookId}/delete/spell/{spellId}', 'SpellBookController@dltSpellInSpellBook');
     $router->post('/spellbook/add', 'SpellBookController@addSpells');
 });
