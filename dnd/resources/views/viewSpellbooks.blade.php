@@ -11,9 +11,14 @@
     <a href="{{url('/api/spells/')}}"><h1 align = "center"><font size = "5"; color = #D30909>Dungeons & Dragons</font></h1></a>
 </div>
 <div>
-    <div class="btn-group">                                         
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Spellbook
-        <span class = "caret"></span></button>
+    <div class="btn-group">
+        @if($selected_spellbook != null)                                    
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$selected_spellbook->name}}
+            <span class = "caret"></span></button>
+        @else
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Spellbook
+            <span class = "caret"></span></button>
+        @endif
         <div class="dropdown-menu">
         @foreach($spellbooks as $spellbook) 
             <a class="dropdown-item" href="{{url('api/spellbooks/' . $spellbook->spell_book_id)}}"> {{$spellbook->name}}</a>

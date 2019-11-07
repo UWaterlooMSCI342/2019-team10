@@ -22,6 +22,7 @@ class SpellBookController extends Controller
 public function viewSpellBook ($id=null) {
     $spells = [];
     $spellBooks = SpellBook::all();
+    $spellBook = null;
     if ($id != null){
         $spellBook = SpellBook::find($id);
         if ($spellBook != null) {
@@ -29,10 +30,11 @@ public function viewSpellBook ($id=null) {
         }
     } else {
         if (!empty($spellBooks)) {
-            $spells = SpellBook::find($spellBooks[0]->spell_book_id)->spells;
+            $spellBook = SpellBook::find($spellBooks[0]->spell_book_id);
+            $spells = $spellBook->spells;
         }
     }
-    return view('viewSpellbooks', ['spellbooks'=>$spellBooks, 'starting_spells'=>$spells]);
+    return view('viewSpellbooks', ['spellbooks'=>$spellBooks, 'selected_spellbook'=>$spellBook, 'starting_spells'=>$spells]);
 }
 
 public function addSpells(Request $request) {
