@@ -33,22 +33,10 @@
                 <th scope = "col">Class</th>
                 <th scope = "col">Component</th>
                 <th scope = "col">School</th>
+                <th scope = "col">Delete</th>
             </tr>
         </thead>
-                    <tbody>
 
-                @foreach($spells as $spell)
-                    <tr>
-                        <td>{{$spell -> level}}</td>
-                        <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
-                        <td>{{$spell -> formattedClasses()}}</td>
-                        <td>{{$spell -> components}}</td>
-                        <td>{{$spell -> school}}</td>
-                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
-                        <td style="text-align:center;"></td>
-                    </tr>
-                @endforeach
-            </tbody>
     </table>
 </div>
 </head>
