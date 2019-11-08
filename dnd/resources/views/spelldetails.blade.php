@@ -13,9 +13,8 @@
 </div>
 </div>
         
-
 <div style="background:#DCDCDC;overflow-x: auto;" class="jumbotron text-center">
-    <table class="table table-inverse table-dark" style="text-align:left; background-colour:white; border=5;">
+    <table class="table table-inverse table-dark" style="text-align:left; background-colour:white; border=5;font-size: 14px;">
         <tr>
             <th> Name </th>
             <th> Level </th>
