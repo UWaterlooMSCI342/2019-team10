@@ -29,7 +29,7 @@ public function viewSpellBook ($id=null) {
             $spells=$spellBook->spells;
         }
     } else {
-        if (!empty($spellBooks)) {
+        if (count($spellBooks) != 0) {
             $spellBook = SpellBook::find($spellBooks[0]->spell_book_id);
             $spells = $spellBook->spells;
         }
@@ -49,9 +49,19 @@ public function addSpells(Request $request) {
         }
         return redirect(url("api/spells"));
     }
+
 public function dltSpellInSpellBook($spellId,$spellBookId){
         $spellBook = SpellBook::find($spellBookId);
         $spellBook->spells()->detach($spellId);
         return redirect(url("api/spellbooks/" .$spellBookId));
     }
+
+
+    public function dltSpellbook($spellBookId){
+        $spellBook = SpellBook::find($spellBookId);
+        $spellBook->spells()->detach();
+        $spellBook->delete();
+        return redirect(url("api/spellbooks"));
+    }
+
 }

@@ -15,6 +15,7 @@
         @if($selected_spellbook != null)                                    
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$selected_spellbook->name}}
             <span class = "caret"></span></button>
+            <a style="color: inherit;" href="{{url('api/spellbook/' . $selected_spellbook->spell_book_id . '/delete')}}"><button type="button" class="btn btn-danger" style="margin-left:8px;">Delete Spellbook</button></a>
         @else
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Spellbook
             <span class = "caret"></span></button>

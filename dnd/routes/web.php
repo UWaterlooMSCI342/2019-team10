@@ -12,6 +12,7 @@
 */
  
 use App\SpellController;
+$router->get('/', 'SpellController@index');
 
 $router->group(['prefix'=>'api'], function() use($router){
 	$router->post('/spell/filter/multifilter', 'SpellController@multifilter');  
@@ -25,6 +26,7 @@ $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/spell/filter/{filterName}/{filter}', 'SpellController@filter');    
     $router->get('/spellbooks/{id}', 'SpellBookController@viewSpellBook');
     $router->get('/spellbooks', 'SpellBookController@viewSpellBook');
-	$router->get('/spellbook/{spellBookId}/delete/spell/{spellId}', 'SpellBookController@dltSpellInSpellBook');
+    $router->get('/spellbook/{spellBookId}/delete/spell/{spellId}', 'SpellBookController@dltSpellInSpellBook');
+	$router->get('/spellbook/{spellBookId}/delete', 'SpellBookController@dltSpellbook');
     $router->post('/spellbook/add', 'SpellBookController@addSpells');
 });
