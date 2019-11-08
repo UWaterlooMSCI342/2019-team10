@@ -21,13 +21,13 @@ class SpellController extends Controller
 		$concentration = Spell::select('concentration')->distinct()->get();
 		$ritual = Spell::select('ritual')->distinct()->get();
 		$classes = SpellClass::select('class_name','class_id')->distinct('class_name')->get();
-
         $school = Spell::select('school')->distinct()->get();
+      
         $spellbooks = SpellBook::all();
         if(!empty($spells)){
             $spells= $spells->sortBy('level');
         }
-		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school, 'rituals' => $ritual, 'concentrations' => $concentration, 'spellbooks'=> $spellbooks];
+		return ['spells'=> $spells, 'levels'=>$level->sortBy('level'), 'classes'=> $classes, 'schools' => $school,  'rituals' => $ritual, 'concentrations' => $concentration, 'spellbooks'=> $spellbooks];
 	}
     public function index()
     {
@@ -36,12 +36,26 @@ class SpellController extends Controller
 
     }
 
+    private function formattedHints($exampleList, $example_key) {
+         $example_strings = array();
+        foreach($exampleList as $ex) {
+            array_push($example_strings, $ex->$example_key);
+        }
+        return join(",", $example_strings);
+    }
+
 	public function add()
     {
-        $classes=SpellClass::select('class_name','class_id')->get();
-        $level = Spell::select('level')->distinct()->get();
-        $school = Spell::select('school')->distinct()->get();
-        return view('add',['classes' => $classes, 'levels'=> $level->sortBy('level'), 'schools' => $school] , $this->getFilterValues());
+        $component = Spell::select('components')->distinct()->get();
+        $castingtime = Spell::select('casting_time')->distinct()->take(3)->get();
+        $duration = Spell::select('duration')->distinct()->take(3)->get();
+        $range = Spell::select('range')->distinct()->take(3)->get();
+
+        return view('add',
+        ['components' => $component, 'castingtime'=> $this->formattedHints($castingtime,'casting_time'),
+        'duration' => $duration, 'duration'=> $this->formattedHints($duration,'duration'),
+        'range' => $duration, 'range'=> $this->formattedHints($range,'range')] , 
+        $this->getFilterValues());
     }
 
     public function dlt($spellId){
