@@ -38,10 +38,17 @@ body {
   <div class="form-group">
     <label><b>Level</b></label>
       <select name = "level" placeholder="level" class = "browser-default-disabled custom-select custom-select-lg mb-3">
-      @foreach($levels as $level) 
-      <option value = "{{($level->level)}}">{{($level->level)}}</option>
-      @endforeach
-    </select>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
 </div>
 
 <div class="form-group">
@@ -56,9 +63,16 @@ body {
   <div class="form-group">
     <label><b>Components</b></label>
       <select name = "components" class = "browser-default custom-select custom-select-lg mb-3">
-      @foreach($components as $component) 
+      <option value="V">V</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="V S">V S</option>
+      <option value="V M">V M</option>
+      <option value="S M">S M</option>
+      <option value="V S M">V S M</option>
+      <!-- @foreach($components as $component) 
       <option value = "{{($component->components)}}">{{($component->components)}}</option>
-      @endforeach
+      @endforeach -->
     </select>
   </div>
     
