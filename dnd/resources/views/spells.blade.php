@@ -32,11 +32,10 @@
 
 <script>
 function searchName() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchbar");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("spellTable");
-  tr = table.getElementsByTagName("tr");
+  var input = document.getElementById("searchbar");
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById("spellTable");
+  var tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("a")[0];
     if (td) {
@@ -115,9 +114,9 @@ function searchName() {
 </div>
 <br>
 
+
 <div>
-<input id="searchbar" onkeyup="searchName()" type="text"
-        name="search" placeholder="Search by Name"> 
+  <input id="searchbar" onkeyup="searchName()" type="text" name="search" placeholder="Search by Name"> 
 </div>
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -177,8 +176,8 @@ function searchName() {
     </div>
   </div>
 </div>
-
 <br/>
+
 <form action="{{url('/api/spellbook/add')}}" method="POST">
     <div class="btn-group wrapper" style="text-align:right, position: absolute;">                                         
         <button type = "button" href = "#" style = "color: white;" id = "addToSpellbook" class="btn btn-success btn-large" data-toggle="modal" data-target="#spellbookModal" value = "addToSpell" disabled = "disabled"> Add to Spellbook </button>
