@@ -7,12 +7,7 @@
 <head>
 
 <body> 
-<div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
- text-align: center; background-color: #3D3131; border: 10px solid black;">
-    <a href="{{url('/api/spells/')}}"><h1 align = "center"><font size = "5"; color = #D30909>Dungeons & Dragons</font></h1></a>
-</div>
 <style>
-
 .container {
   position: relative;
 
@@ -40,7 +35,7 @@
 .school_tag{
   position: absolute;
   top: 1.5%;
-  left: 78%;
+  left: 77.5%;
   color: white;
 }
 .level_tag{
@@ -96,16 +91,13 @@ padding-left: 2.5%;
 }
 
 .shrink{
--webkit-transform:scale(0.5);
--moz-transform:scale(0.5);
--ms-transform:scale(0.5);
 transform:scale(0.5);
 }
 </style>
 </head>
 @foreach($spells as $spell)
 <div class="container">
-  <img src="https://i.ibb.co/7rSxKBz/spellcard.jpg" style="width:100%">
+  <img src="https://i.ibb.co/8mfmYmM/spellcard.jpg"style="width:100%">
   <div class="spellname_tag">
   <h1>{{$spell -> name}}</h1>
   </div>
@@ -145,7 +137,6 @@ transform:scale(0.5);
   </div>
 </div>
 @endforeach
-</div>
 </body>
 </html>
 
