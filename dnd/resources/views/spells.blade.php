@@ -30,9 +30,28 @@
     });
 </script>
 
-<div>
+<script>
+function searchName() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchbar");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("spellTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("a")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
 
-	
+<div>
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
         </div>
@@ -44,7 +63,6 @@
         <a class="dropdown-item" href="{{url('/api/spell/filter/level/' . $level->level)}}"> {{($level->level)}}</a>
         @endforeach
         </div>
-     
     </div>
 
     <div class="btn-group">                                         
@@ -86,18 +104,21 @@
         <a class="dropdown-item" href="{{url('/api/spell/filter/school/' . $school->school)}}"> {{$school->school}}</a>
         @endforeach
         </div>
-    </div>
-		
+    </div>	
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
   Advanced Filter
 </button>
+
 <div class="btn-group">                                         
         <a href="{{url('/api/spellbooks')}}" class="btn btn-danger">View Spellbooks</a>
   </div>
-  
 </div>
+<br>
 
-
+<div>
+<input id="searchbar" onkeyup="searchName()" type="text"
+        name="search" placeholder="Search by Name"> 
+</div>
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -164,7 +185,7 @@
     </div>
 
     <div style="height:400px;overflow:auto;">
-        <table class="table table-striped table-dark w-auto" style = "font-size: 14px">
+        <table id = "spellTable" class="table table-striped table-dark w-auto" style = "font-size: 14px">
             <thead>
                 <tr>
                     <th scope = "col">Level</th>
@@ -183,7 +204,7 @@
                 @foreach($spells as $spell)
                     <tr>
                         <td>{{$spell -> level}}</td>
-                        <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
+                        <td class = "Name"><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
                         <td>{{$spell -> formattedClasses()}}</td>
                         <td>{{$spell -> ritual}}</td>
                         <td>{{$spell -> concentration}}</td>
