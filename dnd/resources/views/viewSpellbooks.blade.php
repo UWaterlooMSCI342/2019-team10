@@ -25,7 +25,11 @@
             <a class="dropdown-item" href="{{url('api/spellbooks/' . $spellbook->spell_book_id)}}"> {{$spellbook->name}}</a>
         @endforeach
         </div>
+
     </div>
+		<div class="btn-group">
+		<a href="{{url('/api/spellbook/export/' . $selected_spellbook->spell_book_id)}}" class="btn btn-primary">Export to Pdf</a>
+		</div>
 </div>
 <div style="height:400px;overflow:auto;">
     <table class="table table-inverse table-dark">
