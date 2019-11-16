@@ -98,7 +98,6 @@
 </div>
 
 
-
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -188,7 +187,30 @@
                         <td>{{$spell -> ritual}}</td>
                         <td>{{$spell -> concentration}}</td>
                         <td>{{$spell -> school}}</td>
-                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary" id = "delete_button">Delete</a></td>
+
+                        <td>
+                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#ModalDelete">
+                        Delete 
+                        </button> </td>
+
+                
+                        <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">Are you Sure?</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+
+        
+                        <div class="modal-footer">
+                        <button type = "button" a href="{{url('/api/spell/{id}')}}" class = "btn btn-primary" id = "delete_button">Yes</a></td>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" href="{{url('/api/spells')}}">No</button>
+                        </div>
+
                         <td style="text-align:center;">
                             <div class="form-check" >
                                 <input onclick=getValue() type="checkbox" name="spells[]" class="checks" value="{{$spell->spell_id}}" style="width:20px;height:20px;">
