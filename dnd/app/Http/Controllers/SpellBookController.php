@@ -63,5 +63,10 @@ public function dltSpellInSpellBook($spellId,$spellBookId){
         $spellBook->delete();
         return redirect(url("api/spellbooks"));
     }
+    public function export($spellBookId){
+        $spellBook = SpellBook::find($spellBookId);
+        $spells=$spellBook->spells;
+        return view('export',['spells'=>$spells]);
+    }
 
 }

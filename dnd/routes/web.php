@@ -29,4 +29,5 @@ $router->group(['prefix'=>'api'], function() use($router){
     $router->get('/spellbook/{spellBookId}/delete/spell/{spellId}', 'SpellBookController@dltSpellInSpellBook');
 	$router->get('/spellbook/{spellBookId}/delete', 'SpellBookController@dltSpellbook');
     $router->post('/spellbook/add', 'SpellBookController@addSpells');
+    $router->get('/spellbook/export/{spellBookId}', 'SpellBookController@export');
 });

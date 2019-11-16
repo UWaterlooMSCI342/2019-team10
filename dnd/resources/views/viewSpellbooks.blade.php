@@ -5,6 +5,33 @@
 @section('content')
 <html>
 <head>
+<script type="text/javascript">
+function closePrint () {
+  document.body.removeChild(this.__container__);
+}
+
+function setPrint () {
+  this.contentWindow.__container__ = this;
+  this.contentWindow.onbeforeunload = closePrint;
+  this.contentWindow.onafterprint = closePrint;
+  this.contentWindow.focus(); // Required for IE
+  this.contentWindow.print();
+}
+
+function printPage (sURL) {
+  var oHiddFrame = document.createElement("iframe");
+  oHiddFrame.onload = setPrint;
+  oHiddFrame.style.position = "fixed";
+  oHiddFrame.style.right = "0";
+  oHiddFrame.style.bottom = "0";
+  oHiddFrame.style.width = "0";
+  oHiddFrame.style.height = "0";
+  oHiddFrame.style.border = "0";
+  oHiddFrame.src = sURL;
+  document.body.appendChild(oHiddFrame);
+}
+</script>
+</head>
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">
@@ -25,7 +52,12 @@
             <a class="dropdown-item" href="{{url('api/spellbooks/' . $spellbook->spell_book_id)}}"> {{$spellbook->name}}</a>
         @endforeach
         </div>
+
     </div>
+		<div class="btn-group">
+        
+		<button onclick="printPage('{{url('/api/spellbook/export/' . $selected_spellbook->spell_book_id)}}');" class="btn btn-primary">Export to Pdf </button>
+		</div>
 </div>
 <div style="height:400px;overflow:auto;">
     <table class="table table-inverse table-dark">
@@ -62,7 +94,6 @@
     </div>
     @endif
 </div>
-</head>
 </body>
 </html>
 
