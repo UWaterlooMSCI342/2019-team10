@@ -188,7 +188,12 @@
                         <td>{{$spell -> ritual}}</td>
                         <td>{{$spell -> concentration}}</td>
                         <td>{{$spell -> school}}</td>
-                        <td><a href="{{url('/api/spell/' . $spell -> spell_id)}}" class = "btn btn-primary" id = "delete_button">Delete</a></td>
+
+                        <td>
+                        <a href="{{url('/api/spell/' . $spell -> spell_id)}}" onclick="return confirm('Are you sure you want to delete this spell?');" class = "btn btn-primary" id = "delete_button">Delete</a>                        </td>
+
+
+                        
                         <td style="text-align:center;">
                             <div class="form-check" >
                                 <input onclick=getValue() type="checkbox" name="spells[]" class="checks" value="{{$spell->spell_id}}" style="width:20px;height:20px;">
