@@ -116,6 +116,7 @@ function searchName() {
 
 
 <div>
+  <h1 style = "color:white; font-size: 20px; font-family: bold">Search Spells</h1>
   <input id="searchbar" onkeyup="searchName()" type="text" name="search" placeholder="Search by Name"> 
 </div>
 
