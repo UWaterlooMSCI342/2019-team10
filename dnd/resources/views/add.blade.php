@@ -87,6 +87,21 @@ body {
     </select>
   </div>
     
+  
+<div class="form-group row">
+	
+    <div class="col-sm-10">
+	<label> <b>Components</b> </label>
+	<br>@foreach ($classes as $class)
+	<label for="inlineCheckbox1"> {{$class->class_name}}  </label>
+	   <div class="form-check form-check-inline">
+                      <input  type="checkbox" name="classes[]" class="form-check-input" value="{{$class->class_id}}" id="class">
+     </div>
+     
+	   @endforeach
+  </div>
+</div>
+
   <div class="form-group">
 	<label> <b>Casting Time</b></label>
     <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: {{$castingtime}}"maxlength="16"  >
