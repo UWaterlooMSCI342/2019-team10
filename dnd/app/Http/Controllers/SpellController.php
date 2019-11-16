@@ -106,13 +106,37 @@ class SpellController extends Controller
     }
 public function multifilter(Request $request){
 	$spells = Spell::query();
-	if ($request->input('level') != "Any"){
-		$spells = $spells->where('level',$request->input('level'));
-	}
-	if ($request->input('class') != "Any"){
-		$spell_ids = DB::table('spell_spell_class')
-		->select('spell_id')->where('class_id',$request->input('class'))->pluck('spell_id')->all();
+	if ($request->input('level') != null){
+		$spells = $spells->whereIn('level',$request->input('level'));
+    }
+	if ($request->input('class') != null){
+        $classes = $request->input('class');
+        $and = $request->input('classLogic') == 'on';
+        if ($and && count($classes) > 0) {
+            $spell_ids = DB::table('spell_spell_class')
+                    ->select('spell_id')
+                    ->where('class_id', $classes[0])
+                    ->pluck('spell_id')
+                    ->all();
+            for ($i = 1; $i < count($classes); $i++) {
+                $spell_ids = DB::table('spell_spell_class')
+                        ->select('spell_id')
+                        ->whereIn('spell_id', $spell_ids)
+                        ->where('class_id', $classes[$i])
+                        ->pluck('spell_id')
+                        ->all();
+            }
+        } else {
+            $spell_ids = DB::table('spell_spell_class')
+                    ->select('spell_id')
+                    ->whereIn('class_id',$classes)
+                    ->pluck('spell_id')
+                    ->all();
+        }
 		$spells = $spells->whereIn('spell_id',$spell_ids);	
+    }
+    if ($request->input('school') != null){
+		$spells = $spells->whereIn('school',$request->input('school'));
 	}
 	if ($request->input('ritual') != "Any"){
 		$spells = $spells->where('ritual',$request->input('ritual'));
@@ -120,12 +144,7 @@ public function multifilter(Request $request){
 	if ($request->input('concentration') != "Any"){
 		$spells = $spells->where('concentration',$request->input('concentration'));
 	}
-	if ($request->input('school') != "Any"){
-		$spells = $spells->where('school',$request->input('school'));
-	}
-			
 	return view('spells', $this->getFilterValues($spells->get()));
-	
 }
 }
 
