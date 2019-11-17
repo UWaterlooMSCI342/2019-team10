@@ -26,6 +26,9 @@ body {
 </div>
 </div>
 
+<div class = whitefont> <font size = "2"> <h2>Please be careful when adding new spells.</h2> </font>
+</div>
+
 <div class = whitefont>
 
 <form action="{{url('/api/spell/')}}" method="POST">
