@@ -25,7 +25,7 @@ class CreateSpellsTable extends Migration
             $table ->string ('duration')->default('unspecified');
             $table ->string ('concentration')->default('unspecified');
             $table ->string ('components')->default('unspecified');
-            $table ->string ('materials')->default('unspecified');
+            $table ->string ('materials')->default('Empty');
             $table ->integer ('description_length')->default(0);
             $table ->text ('description');
 

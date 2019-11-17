@@ -27,11 +27,13 @@ public function viewSpellBook ($id=null) {
         $spellBook = SpellBook::find($id);
         if ($spellBook != null) {
             $spells=$spellBook->spells;
+            $spells= $spells->sortBy('level');
         }
     } else {
         if (count($spellBooks) != 0) {
             $spellBook = SpellBook::find($spellBooks[0]->spell_book_id);
             $spells = $spellBook->spells;
+            $spells= $spells->sortBy('level');
         }
     }
     return view('viewSpellbooks', ['spellbooks'=>$spellBooks, 'selected_spellbook'=>$spellBook, 'starting_spells'=>$spells]);

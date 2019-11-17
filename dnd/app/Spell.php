@@ -37,6 +37,7 @@ class Spell extends DndModel
         foreach($classes as $class) {
             array_push($class_names, $class->class_name);
         }
-        return join(",", $class_names);
+        asort($class_names);
+        return join(", ", $class_names);
     }
 }
