@@ -26,7 +26,7 @@ body {
 </div>
 </div>
 
-<div class = whitefont> <font size="2"> CAUTION: Please ensure the information you input into the system is correct.</font>
+<div class = whitefont> <font size="3"> <b> CAUTION: Please ensure the information you input into the system is correct.</b></font>
 </div>
 
 <br></br>
