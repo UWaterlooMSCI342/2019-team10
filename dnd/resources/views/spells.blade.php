@@ -107,7 +107,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-12">
-                            <input id="classFilterLogic" name="classLogic" type="checkbox" checked data-toggle="toggle" data-on="And" data-off="Or" data-onstyle="success" data-offstyle="danger">
+                            <input id="classFilterLogic" name="classLogic" type="checkbox" data-toggle="toggle" data-on="And" data-off="Or" data-onstyle="success" data-offstyle="danger">
                         </div>
                     </div>
 
