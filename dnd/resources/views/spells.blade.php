@@ -115,9 +115,11 @@ function searchName() {
 <br>
 
 
-<div>
-  <h1 style = "color:white; font-size: 20px; font-family: bold">Search Spells</h1>
-  <input id="searchbar" onkeyup="searchName()" type="text" name="search" placeholder="Search by Name"> 
+<div style = "background-color: #D30909; padding: 8px; width: 252px">
+  <div style = "padding: 16px; width: 235px; height: 100px; background-color: #212429">
+    <h1 style = "color:white; font-size: 20px; font-family: bold">Search Spells</h1>
+    <input id="searchbar" onkeyup="searchName()" type="text" name="search" placeholder="Search by Name"> 
+  </div>
 </div>
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
