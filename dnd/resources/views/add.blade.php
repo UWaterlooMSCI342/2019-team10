@@ -31,12 +31,12 @@ body {
 <form action="{{url('/api/spell/')}}" method="POST">
 	
   <div class="form-group">
-	    <label> <b>Spell Name</b> </label>
+	    <label> <b>Spell Name (required)</b> </label>
       <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name"  >
   </div>
 
   <div class="form-group">
-    <label><b>Level</b></label>
+    <label><b>Level (required)</b></label>
       <select name = "level" placeholder="level" class = "browser-default-disabled custom-select custom-select-lg mb-3">
       @foreach($levels as $level) 
       <option value = "{{($level->level)}}">{{($level->level)}}</option>
@@ -45,7 +45,7 @@ body {
 </div>
 
 <div class="form-group">
-    <label><b>School</b></label>
+    <label><b>School (required)</b></label>
     <select name = "type" aria-labelledby="dropdownMenuButton" class = "browser-default custom-select custom-select-lg mb-3">
       @foreach($schools as $school) 
       <option value = "{{($school->school)}}">{{($school->school)}}</option>
@@ -78,7 +78,7 @@ body {
  </div>
 
   <div class="form-group">
-      <label for="Description">Description</label>
+      <label for="Description"><b>Description</b></label>
       <textarea class="form-control" id="description" name="description" rows="5"></textarea>
   </div>
 
@@ -118,7 +118,7 @@ body {
   <div class="form-group row">
 	
     <div class="col-sm-10">
-	<label> <b>Select All Classes That Apply:</b> </label>
+	<label> <b>Select All Classes That Apply: (required)</b> </label>
 	<br>@foreach ($classes as $class)
 	<label for="inlineCheckbox1"> {{$class->class_name}}  </label>
 	   <div class="form-check form-check-inline">
