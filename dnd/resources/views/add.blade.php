@@ -26,8 +26,10 @@ body {
 </div>
 </div>
 
-<div class = whitefont> <font size = "2"> <h2>Please be careful when adding new spells.</h2> </font>
+<div class = whitefont> <font size="2"> Please be careful when adding new spells.</font>
 </div>
+
+<br></br>
 
 <div class = whitefont>
 
