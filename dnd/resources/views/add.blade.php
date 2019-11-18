@@ -26,6 +26,11 @@ body {
 </div>
 </div>
 
+<div class = whitefont> <font size="3"> <b> CAUTION: Please ensure the information you input into the system is correct.</b></font>
+</div>
+
+<br></br>
+
 <div class = whitefont>
 
 <form action="{{url('/api/spell/')}}" method="POST">
