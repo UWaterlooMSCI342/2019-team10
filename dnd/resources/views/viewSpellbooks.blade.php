@@ -41,10 +41,10 @@ function printPage (sURL) {
 <div>
 
 <div >
-<h1 style = "color: white; font-size: 20px">Current Spellbook </h1>
+<h1 style = "color: white; font-size: 18px">Current Spellbook </h1>
 </div> 
     <div class="btn-group">
-    
+   
         @if($selected_spellbook != null)                                    
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$selected_spellbook->name}}
             <span class = "caret"></span></button>
@@ -64,8 +64,8 @@ function printPage (sURL) {
         @endforeach
         </div>
     </div>
+   
 		<div class="btn-group">
-        
 		<button onclick="printPage('{{url('/api/spellbook/export/' . $selected_spellbook->spell_book_id)}}');" class="btn btn-primary">Export to Pdf </button>
 		</div>
 </div>
@@ -88,6 +88,7 @@ function printPage (sURL) {
             <tr>
                 <td>{{$spell -> level}}</td>
                 <td><a href="{{url('/api/spell/detail/' . $spell -> spell_id)}}">{{$spell -> name}}</a></td>
+              
                 <td>{{$spell -> formattedClasses()}}</td>
                 <td>{{$spell -> components}}</td>
                 <td>{{$spell -> school}}</td>
