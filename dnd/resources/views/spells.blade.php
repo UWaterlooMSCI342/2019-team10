@@ -10,9 +10,9 @@
     <a href="{{url('/api/spells')}}"><h1 align = "center"><font size = "5"; color = #D30909> Dungeons & Dragons</font></h1></a>
 </div>
 
-
 <script>
     var checker = 0 
+    $.fn.selectpicker.Constructor.BootstrapVersion = '4';
     $(document).ready(function(){
         $('input[type="checkbox"]').click(function(){
             if($(this).prop("checked")== true){
@@ -31,153 +31,123 @@
 </script>
 
 <script>
-function searchName() {
-  var input = document.getElementById("searchbar");
-  var filter = input.value.toUpperCase();
-  var table = document.getElementById("spellTable");
-  var tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("a")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+    function searchName() {
+        var input = document.getElementById("searchbar");
+        var filter = input.value.toUpperCase();
+        var table = document.getElementById("spellTable");
+        var tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("a")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }       
+        }
+    }
 </script>
+<div style = "padding: 16px; width:fit-content; height: fit-content; background-color: #212429">
 
-<div>
+    <div class="btn-group" style = "border-right:2px solid #616161; padding-right: 16px; margin-left:8px; margin-right:16px; color:white;" >
+        <div >
+            <label style = "display:block; color:white; font-size: 16px;"><b>Search Spells</b></label>
+            <input id="searchbar" onkeyup="searchName()" type="text" name="search" placeholder="Search by Name"> 
+        </div>
+    </div>
+
     <div class="btn-group">                                         
         <a href="{{url('/api/add')}}" class="btn btn-primary">Add Spell</a>
-        </div>
-<div class="btn-group">                                         
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Level
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($levels as $level) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/level/' . $level->level)}}"> {{($level->level)}}</a>
-        @endforeach
-        </div>
+    </div>
+
+    <div class="btn-group"> 
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#Modal">
+            Advanced Filter
+        </button>
     </div>
 
     <div class="btn-group">                                         
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($classes as $class) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/class/' . $class->class_id)}}"> {{$class->class_name}}  </a>
-        @endforeach
-        </div>
-
-    </div>
-
-	<div class="btn-group">                                         
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ritual
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($rituals as $ritual) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/ritual/' . $ritual->ritual)}}"> {{$ritual->ritual}}  </a>
-        @endforeach
-        </div>
-    </div>
-	
-	<div class="btn-group">                                         
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concentration
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($concentrations as $concentration) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/concentration/' . $concentration->concentration)}}"> {{$concentration->concentration}}  </a>
-        @endforeach
-        </div>
-    </div>
-	
-    <div class="btn-group">                                         
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School
-        <span class = "caret"></span></button>
-        <div class="dropdown-menu">
-        @foreach($schools as $school) 
-        <a class="dropdown-item" href="{{url('/api/spell/filter/school/' . $school->school)}}"> {{$school->school}}</a>
-        @endforeach
-        </div>
-    </div>	
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
-  Advanced Filter
-</button>
-
-<div class="btn-group">                                         
         <a href="{{url('/api/spellbooks')}}" class="btn btn-danger">View Spellbooks</a>
-  </div>
-</div>
-<br>
+    </div>
 
-
-<div style = "background-color: #D30909; padding: 8px; width: 252px">
-  <div style = "padding: 16px; width: 235px; height: 100px; background-color: #212429">
-    <h1 style = "color:white; font-size: 20px; font-family: bold">Search Spells</h1>
-    <input id="searchbar" onkeyup="searchName()" type="text" name="search" placeholder="Search by Name"> 
-  </div>
 </div>
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Advanced Filter Search</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
-        
-<label><b>Level:</b></label>
-<select name = "level" class = "browser-default custom-select custom-select-lg mb-3">
-		<option selected value = "Any"> -- Any -- </option>
-		@foreach($levels as $level) 
-		<option value = "{{($level->level)}}">{{($level->level)}}</option>
-		@endforeach
-    </select>
-<label><b>Class:</b></label>
- <select name = "class" class = "browser-default custom-select custom-select-lg mb-3">
-		<option selected value = "Any"> -- Any -- </option>
-		@foreach($classes as $class) 
-		<option value = "{{($class->class_id)}}">{{($class->class_name)}}</option>
-		@endforeach
-    </select>
-<label><b>Ritual:</b></label>
-	<select name = "ritual" class = "browser-default custom-select custom-select-lg mb-3">
-	<option selected value = "Any"> -- Any -- </option>
-		@foreach($rituals as $ritual) 
-		<option value = "{{($ritual->ritual)}}">{{($ritual->ritual)}}</option>
-		@endforeach
-    </select>
-<label><b>Concentration:</b></label>
-	<select name = "concentration" class = "browser-default custom-select custom-select-lg mb-3">
-	<option selected value = "Any"> -- Any -- </option>
-		@foreach($concentrations as $concentration) 
-		<option value = "{{($concentration->concentration)}}">{{($concentration->concentration)}}</option>
-		@endforeach
-    </select>
-<label><b>School:</b></label>
-	<select name = "school" class = "browser-default custom-select custom-select-lg mb-3">
-	<option selected value = "Any"> -- Any -- </option>
-		@foreach($schools as $school) 
-		<option value = "{{($school->school)}}">{{($school->school)}}</option>
-		@endforeach
-    </select>
-  
-      </div>
-      <div class="modal-footer">
-	  <input type="submit" value="Submit" class="btn btn-success">
-      <button type="button" class="btn btn-danger" data-dismiss="modal" href="{{url('/api/spells')}}">Close</button>
-      </div>
-</form>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Advanced Filter Search</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action = "{{url('/api/spell/filter/multifilter')}}" method = "POST">	
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="levelFilterSelect"><b>Level:</b></break></label>
+                            <select id="levelFilterSelect" name = "level[]" class="selectpicker form-control" multiple>
+                                @foreach($levels as $level) 
+                                    <option value = "{{($level->level)}}">{{($level->level)}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="classFilterSelect"><b>Classes:</b></label>
+                            <select id="classFilterSelect" name = "class[]" class="selectpicker form-control" multiple>
+                                @foreach($classes as $class) 
+                                    <option value = "{{($class->class_id)}}">{{($class->class_name)}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input id="classFilterLogic" name="classLogic" type="checkbox" data-toggle="toggle" data-on="And" data-off="Or" data-onstyle="success" data-offstyle="danger">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="schoolFilterSelect"><b>School:</b></label>
+                        <select id="schoolFilterSelect" name = "school[]" class="selectpicker form-control" multiple>
+                            @foreach($schools as $school) 
+                                <option value = "{{($school->school)}}">{{($school->school)}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ritualFilterSelect"><b>Ritual:</b></label>
+                        <select id="ritualFilterSelect" name = "ritual" class="selectpicker form-control">
+                            <option selected value = "Any"> -- Any -- </option>
+                            @foreach($rituals as $ritual) 
+                                <option value = "{{($ritual->ritual)}}">{{($ritual->ritual)}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="concentrationFilterSelect"><b>Concentration:</b></label>
+                        <select id="concentrationFilterSelect" name = "concentration" class="selectpicker form-control">
+                            <option selected value = "Any"> -- Any -- </option>
+                            @foreach($concentrations as $concentration) 
+                                <option value = "{{($concentration->concentration)}}">{{($concentration->concentration)}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="submit" value="Submit" class="btn btn-success">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" href="{{url('/api/spells')}}">Close</button>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 <br/>
 

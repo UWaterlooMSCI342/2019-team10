@@ -32,7 +32,7 @@ class Spell extends DndModel
     }
 
     public function formattedClasses() {
-        $classes = $this->belongsToMany(SpellClass::class, "spell_spell_class", "spell_id", "class_id")->get();
+        $classes = $this->belongsToMany(SpellClass::class, "spell_spell_class", "spell_id", "class_id")->get()->sortBy('class_name');
         $class_names = array();
         foreach($classes as $class) {
             array_push($class_names, $class->class_name);
