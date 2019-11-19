@@ -87,19 +87,54 @@ body {
     </select>
   </div>
     
-  
 <div class="form-group row">
 	
     <div class="col-sm-10">
 	<label> <b>Components</b> </label>
-	<br>@foreach ($classes as $class)
-	<label for="inlineCheckbox1"> {{$class->class_name}}  </label>
+	<br>@foreach ($components as $component)
+
 	   <div class="form-check form-check-inline">
-                      <input  type="checkbox" name="classes[]" class="form-check-input" value="{{$class->class_id}}" id="class">
-     </div>
-     
-	   @endforeach
-  </div>
+        <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
+      <option value="V">V</option>
+      </div>
+      
+      <div class="form-check form-check-inline">
+      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
+      <option value="S">S</option>
+      </div>
+
+      <div class="form-check form-check-inline">
+      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
+      <option value="M">M</option>
+      </div>
+
+      <div class="form-check form-check-inline">
+      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
+      <option value="V S">V S</option>
+      </div>
+
+      <div class="form-check form-check-inline">
+      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
+      <option value="V M">V M</option>
+      </div>
+
+      <div class="form-check form-check-inline">
+      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
+      <option value="S M">S M</option>
+      </div>
+
+      <div class="form-check form-check-inline">
+      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
+      <option value="V S M">V S M</option>
+      </div>
+
+      <!-- @foreach($components as $component) 
+      <option value = "{{($component->components)}}">{{($component->components)}}</option>
+      @endforeach -->
+     <!-- </div> -->
+	    <!-- @endforeach --> 
+  <!-- </div> -->
+</div>
 </div>
 
   <div class="form-group">
