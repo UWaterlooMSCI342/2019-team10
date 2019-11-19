@@ -18,7 +18,7 @@
         </select>
         <form>
         <div class="form-group">
-          <label for="dropdown">Name of New Spellbook</label>
+          <label for="dropdown">Name of New Spellbook (required)</label>
           <input name = "newSpellbookName" type="text" class="form-control" id="create_new" aria-describedby="emailHelp" placeholder="Type name">
           <small class="form-text text-muted">This spellbook will  be added to your collection.</small>
         </div>
