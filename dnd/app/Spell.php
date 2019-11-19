@@ -40,4 +40,10 @@ class Spell extends DndModel
         asort($class_names);
         return join(", ", $class_names);
     }
+
+    public function chunkifyDescription($chars_per_chunk){
+        $s = chunk_split($this->description, $chars_per_chunk, '|');
+        $s = substr($s, 0, -1);
+        return explode('|', $s);
+    }
 }

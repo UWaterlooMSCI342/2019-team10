@@ -20,9 +20,9 @@
 }
 .materials_tag{
   padding-left: 2.5%;
-  padding-right: 30%;
+  padding-right: 25%;
   position: absolute;
-  top:16%;
+  top:15%;
   Left: 2.5%;
   color: black;
 }
@@ -42,6 +42,7 @@
   position: absolute;
   top: 5%;
   right: 12.5%;
+  font-weight: bold;
   color: white;
 }
 .duration_tag{
@@ -95,48 +96,91 @@ transform:scale(0.5);
 }
 </style>
 </head>
-@foreach($spells as $spell)
-<div class="container">
-  <img src="https://i.ibb.co/8mfmYmM/spellcard.jpg"style="width:100%">
-  <div class="spellname_tag">
-  <h1>{{$spell -> name}}</h1>
-  </div>
-  <div class="materials_tag">
-    <h3>{{$spell -> materials}}</h3>
-  </div>
-  <div class="description_tag">
-  <h3>{{$spell -> description}}</h3>
-  </div>
-  <div class="class_tag">
-    <h3>{{$spell -> formattedClasses()}}</h3>
-  </div>
-  
-  <div class="school_tag">
-    <h3>{{$spell -> school}}</h3>
-  </div>
-  <div class="level_tag">
-  <font size="+15">{{$spell -> level}}</font>
-  </div>
-  <div class="duration_tag">
-  <h3>{{$spell -> duration}}</h3>
-  </div>
-  <div class="castingtime_tag">
-  <h3>{{$spell -> casting_time}}</h3>
-  </div>
-  <div class="range_tag">
-  <h3>{{$spell -> range}}</h3>
-  </div>
-  <div class="concentration_tag">
-  <h3>{{$spell -> concentration}}</h3>
-  </div>
-  <div class="components_tag">
-  <h3>{{$spell -> components}}</h3>
-  </div>
-  <div class="ritual_tag">
-  <h3>{{$spell -> ritual}}</h3>
-  </div>
-</div>
-@endforeach
+  @foreach($spells as $spell)
+  @if($spell->description_length > $desc_len_per_card)
+    @foreach($spell->chunkifyDescription($desc_len_per_card) as $chunk)
+      <div class="container">
+        <img src="https://i.ibb.co/8mfmYmM/spellcard.jpg"style="width:100%">
+        <div class="spellname_tag">
+          <h1>{{$spell -> name}}</h1>
+        </div>
+        <div class="materials_tag">
+          <h5>{{$spell -> materials}}</h5>
+        </div>
+        <div class="description_tag">
+          <h3>{{$chunk}}</h3>
+        </div>
+        <div class="class_tag">
+          <h3>{{$spell -> formattedClasses()}}</h3>
+        </div>
+        <div class="school_tag">
+          <h3>{{$spell -> school}}</h3>
+        </div>
+        <div class="level_tag">
+          <font size="+15" color="#ffffff">{{$spell -> level}}</font>
+        </div>
+        <div class="duration_tag">
+          <h3>{{$spell -> duration}}</h3>
+        </div>
+        <div class="castingtime_tag">
+          <h3>{{$spell -> casting_time}}</h3>
+        </div>
+        <div class="range_tag">
+          <h3>{{$spell -> range}}</h3>
+        </div>
+        <div class="concentration_tag">
+          <h3>{{$spell -> concentration}}</h3>
+        </div>
+        <div class="components_tag">
+          <h3>{{$spell -> components}}</h3>
+        </div>
+        <div class="ritual_tag">
+          <h3>{{$spell -> ritual}}</h3>
+        </div>
+      </div>
+    @endforeach
+  @else
+    <div class="container">
+        <img src="https://i.ibb.co/8mfmYmM/spellcard.jpg"style="width:100%">
+        <div class="spellname_tag">
+          <h1>{{$spell -> name}}</h1>
+        </div>
+        <div class="materials_tag">
+          <h5>{{$spell -> materials}}</h5>
+        </div>
+        <div class="description_tag">
+          <h3>{{$spell -> description}}</h3>
+        </div>
+        <div class="class_tag">
+          <h3>{{$spell -> formattedClasses()}}</h3>
+        </div>
+        <div class="school_tag">
+          <h3>{{$spell -> school}}</h3>
+        </div>
+        <div class="level_tag">
+          <font size="+15" color="#ffffff">{{$spell -> level}}</font>
+        </div>
+        <div class="duration_tag">
+          <h3>{{$spell -> duration}}</h3>
+        </div>
+        <div class="castingtime_tag">
+          <h3>{{$spell -> casting_time}}</h3>
+        </div>
+        <div class="range_tag">
+          <h3>{{$spell -> range}}</h3>
+        </div>
+        <div class="concentration_tag">
+          <h3>{{$spell -> concentration}}</h3>
+        </div>
+        <div class="components_tag">
+          <h3>{{$spell -> components}}</h3>
+        </div>
+        <div class="ritual_tag">
+          <h3>{{$spell -> ritual}}</h3>
+        </div>
+    </div>
+  @endif
+  @endforeach
 </body>
 </html>
 
