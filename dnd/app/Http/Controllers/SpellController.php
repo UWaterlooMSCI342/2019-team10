@@ -74,6 +74,7 @@ class SpellController extends Controller
 
     public function NewSave(Request $request){
         $spell = new Spell;
+        $description = $request->input('description');
         $spell->name=$request->input('spellname');
         $spell->level=$request->input('level'); 
         $spell->school=$request->input('type'); 
@@ -81,7 +82,8 @@ class SpellController extends Controller
         $spell->components=$request->input('components'); 
         $spell->duration=$request->input('duration'); 
         $spell->range=$request->input('range'); 
-        $spell->description=$request->input('description'); 
+        $spell->description=$description; 
+        $spell->description_length = strlen($description);
         $spell->ritual=$request->input('ritual'); 
         $spell->concentration=$request->input('concentration'); 
         $classes=SpellClass::query()->whereIn("class_id",$request->input('classes'))->get();
