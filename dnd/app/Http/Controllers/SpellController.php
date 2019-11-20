@@ -75,7 +75,6 @@ class SpellController extends Controller
         return view('spelldetails',['spell' => $spell]);
     }
 
-
     public function NewSave(Request $request){
         $class_names = $request->input('classes', null);
         if($class_names == null){
@@ -86,7 +85,12 @@ class SpellController extends Controller
         $description = $request->input('description');
         $classes=SpellClass::query()->whereIn("class_id", $class_names)->get();
 
-        $spell->name=$request->input('spellname');
+        $spell_name=$request->input('spellname',null);
+        if($spell_name ==null){
+            return redirect(url("api/add/error"));
+        }
+        $spell->name=$request->input('spellname', $spell_name);
+
         $spell->level=$request->input('level'); 
         $spell->school=$request->input('type'); 
         $spell->casting_time=$request->input('castingtime'); 
