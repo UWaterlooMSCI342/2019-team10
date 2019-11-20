@@ -4,9 +4,6 @@
 
 @section('content')
 
-@if ($error)
-<div class = "Some Required fields are missing"> </div>
-@endif
 
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
