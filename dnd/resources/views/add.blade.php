@@ -71,20 +71,22 @@ body {
     </select>
   </div>  
 
-    <div class="form-group row">
-    <label> <b>Components</b> </label>
+<div class="form-group row">
+  
       <div class="col-sm-10">
-    
+      <label> <b>Components</b> </label>
+      
         <div class="form-check form-check-inline">
-        <label><b>V</label></b>
+            <label>V</label>
             <input  type="checkbox" name="components[]" class="form-check-input" value="V" id="component">
-            <label><b>S</label></b>
+            <label>S</label>
             <input  type="checkbox" name="components[]" class="form-check-input" value="S" id="component">
-            <label><b>M</label></b>
+            <label>M</label>
             <input  type="checkbox" name="components[]" class="form-check-input" value="M" id="component">
+           
         </div>
-        </div>
-    </div> 
+      </div>
+</div> 
 
   <div class="form-group">
 	<label> <b>Casting Time</b></label>
@@ -139,19 +141,19 @@ body {
       </div>
   </fieldset>
   
-  <div class="form-group row">
-	
-  <div class="col-sm-10">
-	<label> <b>Select All Classes That Apply: (required)</b> </label>
-	<br>@foreach ($classes as $class)
-	<label for="inlineCheckbox1"> {{$class->class_name}}  </label>
-	   <div class="form-check form-check-inline">
-                      <input  type="checkbox" name="classes[]" class="form-check-input" value="{{$class->class_id}}" id="class">
-     </div>
-     
-	   @endforeach
-  </div>
-  </div>
+    <div class="form-group row">
+    
+    <div class="col-sm-10">
+    <label> <b>Select All Classes That Apply: (required)</b> </label>
+    <br>@foreach ($classes as $class)
+    <label for="inlineCheckbox1"> {{$class->class_name}}  </label>
+      <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="classes[]" class="form-check-input" value="{{$class->class_id}}" id="class">
+      </div>
+      
+      @endforeach
+    </div>
+    </div>
        
   <div class="form-group row">
     <div class="col-sm-10" align="center">
