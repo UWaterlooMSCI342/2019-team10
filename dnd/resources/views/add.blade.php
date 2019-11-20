@@ -69,73 +69,22 @@ body {
       <option value = "{{($school->school)}}">{{($school->school)}}</option>
       @endforeach
     </select>
-  </div>
+  </div>  
 
-  <div class="form-group">
-    <label><b>Components</b></label>
-      <select name = "components" class = "browser-default custom-select custom-select-lg mb-3">
-      <option value="V">V</option>
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="V S">V S</option>
-      <option value="V M">V M</option>
-      <option value="S M">S M</option>
-      <option value="V S M">V S M</option>
-      <!-- @foreach($components as $component) 
-      <option value = "{{($component->components)}}">{{($component->components)}}</option>
-      @endforeach -->
-    </select>
-  </div>
+    <div class="form-group row">
+    <label> <b>Components</b> </label>
+      <div class="col-sm-10">
     
-<div class="form-group row">
-	
-    <div class="col-sm-10">
-	<label> <b>Components</b> </label>
-	<br>@foreach ($components as $component)
-
-	   <div class="form-check form-check-inline">
-        <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
-      <option value="V">V</option>
-      </div>
-      
-      <div class="form-check form-check-inline">
-      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
-      <option value="S">S</option>
-      </div>
-
-      <div class="form-check form-check-inline">
-      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
-      <option value="M">M</option>
-      </div>
-
-      <div class="form-check form-check-inline">
-      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
-      <option value="V S">V S</option>
-      </div>
-
-      <div class="form-check form-check-inline">
-      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
-      <option value="V M">V M</option>
-      </div>
-
-      <div class="form-check form-check-inline">
-      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
-      <option value="S M">S M</option>
-      </div>
-
-      <div class="form-check form-check-inline">
-      <input  type="checkbox" name="components[]" class="form-check-input" value="{{$component->component_id}}" id="component">
-      <option value="V S M">V S M</option>
-      </div>
-
-      <!-- @foreach($components as $component) 
-      <option value = "{{($component->components)}}">{{($component->components)}}</option>
-      @endforeach -->
-     <!-- </div> -->
-	    <!-- @endforeach --> 
-  <!-- </div> -->
-</div>
-</div>
+        <div class="form-check form-check-inline">
+        <label><b>V</label></b>
+            <input  type="checkbox" name="components[]" class="form-check-input" value="V" id="component">
+            <label><b>S</label></b>
+            <input  type="checkbox" name="components[]" class="form-check-input" value="S" id="component">
+            <label><b>M</label></b>
+            <input  type="checkbox" name="components[]" class="form-check-input" value="M" id="component">
+        </div>
+        </div>
+    </div> 
 
   <div class="form-group">
 	<label> <b>Casting Time</b></label>
@@ -192,7 +141,7 @@ body {
   
   <div class="form-group row">
 	
-    <div class="col-sm-10">
+  <div class="col-sm-10">
 	<label> <b>Select All Classes That Apply: (required)</b> </label>
 	<br>@foreach ($classes as $class)
 	<label for="inlineCheckbox1"> {{$class->class_name}}  </label>
