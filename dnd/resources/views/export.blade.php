@@ -49,6 +49,7 @@
   position: absolute;
   top:24.25%;
   Left: 10%;
+  padding-right: 74%;
   color: black;
 }
 .castingtime_tag{
@@ -56,7 +57,6 @@
   top:28.75%;
   Left: 10%;
   color: black;
-  
 }
 .range_tag{
   position: absolute;
@@ -120,22 +120,22 @@ transform:scale(0.5);
           <font size="+15" color="#ffffff">{{$spell -> level}}</font>
         </div>
         <div class="duration_tag">
-          <h3>{{$spell -> duration}}</h3>
+          <h4>{{$spell -> duration}}</h4>
         </div>
         <div class="castingtime_tag">
-          <h3>{{$spell -> casting_time}}</h3>
+          <h4>{{$spell -> casting_time}}</h4>
         </div>
         <div class="range_tag">
-          <h3>{{$spell -> range}}</h3>
+          <h4>{{$spell -> range}}</h4>
         </div>
         <div class="concentration_tag">
-          <h3>{{$spell -> concentration}}</h3>
+          <h4>{{$spell -> concentration}}</h4>
         </div>
         <div class="components_tag">
-          <h3>{{$spell -> components}}</h3>
+          <h4>{{$spell -> components}}</h4>
         </div>
         <div class="ritual_tag">
-          <h3>{{$spell -> ritual}}</h3>
+          <h4>{{$spell -> ritual}}</h4>
         </div>
       </div>
     @endforeach
@@ -161,22 +161,22 @@ transform:scale(0.5);
           <font size="+15" color="#ffffff">{{$spell -> level}}</font>
         </div>
         <div class="duration_tag">
-          <h3>{{$spell -> duration}}</h3>
+          <h4>{{$spell -> duration}}</h4>
         </div>
         <div class="castingtime_tag">
-          <h3>{{$spell -> casting_time}}</h3>
+          <h4>{{$spell -> casting_time}}</h4>
         </div>
         <div class="range_tag">
-          <h3>{{$spell -> range}}</h3>
+          <h4>{{$spell -> range}}</h4>
         </div>
         <div class="concentration_tag">
-          <h3>{{$spell -> concentration}}</h3>
+          <h4>{{$spell -> concentration}}</h4>
         </div>
         <div class="components_tag">
-          <h3>{{$spell -> components}}</h3>
+          <h4>{{$spell -> components}}</h4>
         </div>
         <div class="ritual_tag">
-          <h3>{{$spell -> ritual}}</h3>
+          <h4>{{$spell -> ritual}}</h4>
         </div>
     </div>
   @endif
