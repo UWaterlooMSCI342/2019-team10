@@ -44,18 +44,22 @@ class SpellController extends Controller
         return join(",", $example_strings);
     }
 
-	public function add()
+	public function add($error=False)
     {
+
         $component = Spell::select('components')->distinct()->get();
         $castingtime = Spell::select('casting_time')->distinct()->take(3)->get();
         $duration = Spell::select('duration')->distinct()->take(3)->get();
         $range = Spell::select('range')->distinct()->take(3)->get();
 
-        return view('add',
-        ['components' => $component, 'castingtime'=> $this->formattedHints($castingtime,'casting_time'),
-        'duration' => $duration, 'duration'=> $this->formattedHints($duration,'duration'),
-        'range' => $duration, 'range'=> $this->formattedHints($range,'range')] , 
-        $this->getFilterValues());
+        return view('add', ['components' => $component, 'castingtime'=> $this->formattedHints($castingtime,'casting_time'),
+                            'duration' => $duration, 'duration'=> $this->formattedHints($duration,'duration'),
+                            'range' => $duration, 'range'=> $this->formattedHints($range,'range'), 'error' => $error], 
+                            $this->getFilterValues());
+    }
+
+    public function addError(){
+        return $this->add(True);
     }
 
     public function dlt($spellId){
@@ -73,12 +77,20 @@ class SpellController extends Controller
 
 
     public function NewSave(Request $request){
+        $class_names = $request->input('classes', null);
+        if($class_names == null){
+            return redirect(url("api/add/error"));
+        }
+
         $spell = new Spell;
         $description = $request->input('description');
+        $classes=SpellClass::query()->whereIn("class_id", $class_names)->get();
+
         $spell->name=$request->input('spellname');
         $spell->level=$request->input('level'); 
         $spell->school=$request->input('type'); 
         $spell->casting_time=$request->input('castingtime'); 
+        
         $spell->components=$request->input('components'); 
         $spell->duration=$request->input('duration'); 
         $spell->range=$request->input('range'); 
@@ -86,11 +98,12 @@ class SpellController extends Controller
         $spell->description_length = strlen($description);
         $spell->ritual=$request->input('ritual'); 
         $spell->concentration=$request->input('concentration'); 
-        $classes=SpellClass::query()->whereIn("class_id",$request->input('classes'))->get();
+        
+
         $spell->save();
         $spell->addClasses($classes);
-    return redirect(url("api/spells"));
- 
+        return redirect(url("api/spells"));
+        
     }
 
     public function filter($filterName, $filter) {
