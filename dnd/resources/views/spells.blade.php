@@ -4,6 +4,7 @@
 
 @section('content')
 
+
 <body style="background-image:url(https://wallpaperaccess.com/full/117898.jpg)"> 
 <div style="margin: 20px; display: inline-block; padding: 20px; height: 90px; width: 30%;
  text-align: center; background-color: #3D3131; border: 10px solid black;">

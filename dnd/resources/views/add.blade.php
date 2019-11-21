@@ -5,6 +5,8 @@
 @section('content')
 app('Illuminate\Http\Request');
 
+
+
 <head>
   <style>
 body {
@@ -25,6 +27,10 @@ body {
   <font color="#8B0000"><h1>Add New Spell</h1></font>
 </div>
 </div>
+
+@if ($error)
+<div> <font size="3" color = "red"> <b> Some Required fields are missing! </b> </font></div>
+@endif
 
 <div class = whitefont> <font size="3"> <b> CAUTION: Please ensure the information you input into the system is correct.</b></font>
 </div>
