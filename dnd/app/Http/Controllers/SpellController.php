@@ -41,7 +41,7 @@ class SpellController extends Controller
         foreach($exampleList as $ex) {
             array_push($example_strings, $ex->$example_key);
         }
-        return join(",", $example_strings);
+        return join(", ", $example_strings);
     }
 
 	public function add($error=False)
