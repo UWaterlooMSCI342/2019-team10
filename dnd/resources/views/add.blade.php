@@ -71,23 +71,6 @@ body {
     </select>
   </div>  
 
-<div class="form-group row">
-  
-      <div class="col-sm-10">
-      <label> <b>Components</b> </label>
-      
-        <div class="form-check form-check-inline">
-            <label>V</label>
-            <input  type="checkbox" name="components[]" class="form-check-input" value="V" id="component">
-            <label>S</label>
-            <input  type="checkbox" name="components[]" class="form-check-input" value="S" id="component">
-            <label>M</label>
-            <input  type="checkbox" name="components[]" class="form-check-input" value="M" id="component">
-           
-        </div>
-      </div>
-</div> 
-
   <div class="form-group">
 	<label> <b>Casting Time</b></label>
     <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: {{$castingtime}}"maxlength="16"  >
@@ -111,8 +94,26 @@ body {
   <div class="form-group">
 	    <label> <b>Materials</b> </label>
       <input type="materials" name="materials" class="form-control" id="description" placeholder="Materials"maxlength="200"  > 
-    </div>
+  </div>
 
+  <div class="form-group row">
+  
+     <div class="col-sm-10">
+      <label> <b>Components</b> </label>
+       <br>
+        <div class="form-check form-check-inline">
+            <label>V</label>
+            <input  type="checkbox" name="components[]" class="form-check-input" value="V" id="component">
+            <label>S</label>
+            <input  type="checkbox" name="components[]" class="form-check-input" value="S" id="component">
+            <label>M</label>
+            <input  type="checkbox" name="components[]" class="form-check-input" value="M" id="component">
+        </br>   
+        </div>
+      </div>
+</div> 
+
+<div class="form-group row">
     <fieldset class="form-group">
       <div class="col-sm-10">
 	  <label> <b>Non/Ritual</b> </label>
@@ -126,7 +127,9 @@ body {
       @endforeach
       </div>
   </fieldset>
-  
+</div>
+
+<div class="form-group row">
     <fieldset class="form-group">
       <div class="col-sm-10">
 	  <label> <b>Non/Concentration</b> </label>
@@ -140,6 +143,7 @@ body {
       @endforeach
       </div>
   </fieldset>
+  </div>
   
     <div class="form-group row">
     
