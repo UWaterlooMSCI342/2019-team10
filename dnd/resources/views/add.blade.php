@@ -37,7 +37,7 @@ body {
 	
   <div class="form-group">
 	    <label> <b>Spell Name (required)</b> </label>
-      <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name"  >
+      <input type="spellname" name="spellname" class="form-control" id="name" placeholder="Spell Name" maxlength="40" >
   </div>
 
   <div class="form-group">
@@ -83,17 +83,17 @@ body {
     
   <div class="form-group">
 	<label> <b>Casting Time</b></label>
-    <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: {{$castingtime}}"  >
+    <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: {{$castingtime}}"maxlength="16"  >
   </div>
 
  <div class="form-group">
 	<label> <b>Duration</b> </label>
-    <input type="duration" name="duration" class="form-control" id="duration" placeholder="Ex: {{$duration}}"  >
+    <input type="duration" name="duration" class="form-control" id="duration" placeholder="Ex: {{$duration}}" maxlength="30"  >
 	</div>
 
 <div class="form-group">
   <label> <b>Range</b> </label>
-    <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Ex: {{$duration}}"   >
+    <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Ex: {{$duration}}" maxlength="25"   >
  </div>
 
   <div class="form-group">
@@ -103,7 +103,7 @@ body {
 
   <div class="form-group">
 	    <label> <b>Materials</b> </label>
-      <input type="materials" name="materials" class="form-control" id="description" placeholder="Materials" > 
+      <input type="materials" name="materials" class="form-control" id="description" placeholder="Materials"maxlength="200"  > 
     </div>
 
     <fieldset class="form-group">
