@@ -73,17 +73,17 @@ body {
 
   <div class="form-group">
 	<label> <b>Casting Time</b></label>
-    <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: {{$castingtime}}"maxlength="16"  >
+    <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: 1 Action, 1 Hour, 1 Minute"maxlength="16"  >
   </div>
 
  <div class="form-group">
 	<label> <b>Duration</b> </label>
-    <input type="duration" name="duration" class="form-control" id="duration" placeholder="Ex: {{$duration}}" maxlength="30"  >
+    <input type="duration" name="duration" class="form-control" id="duration" placeholder="Ex: 8 Hours, 24 Hours, Instantaneous" maxlength="30"  >
 	</div>
 
 <div class="form-group">
   <label> <b>Range</b> </label>
-    <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Ex: {{$duration}}" maxlength="25"   >
+    <input type="rangey" name="range" class="form-control" id="rangey" placeholder="Ex: 30 Feet, 10 Feet" maxlength="25"   >
  </div>
 
   <div class="form-group">
