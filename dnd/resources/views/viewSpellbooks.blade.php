@@ -40,8 +40,8 @@ function printPage (sURL) {
 </div>
 
 
-<div style = "padding: 16px; width:fit-content; height: fit-content; background-color: #212429">
-<h1 style = "color: white; font-size: 18px">Current Spellbook </h1>
+<div style = "padding: 14px; width:fit-content; height: fit-content; background-color: #212429">
+<h1 style = "color: white; font-size: 16px">Current Spellbook </h1>
 
     <div class="btn-group">
    
