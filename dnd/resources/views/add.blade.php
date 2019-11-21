@@ -101,19 +101,26 @@ body {
      <div class="col-sm-10">
       <label> <b>Components</b> </label>
        <br>
-        <div class="form-check form-check-inline">
-            <label>V</label>
-            <input  type="checkbox" name="components[]" class="form-check-input" value="V" id="component">
-            <label>S</label>
-            <input  type="checkbox" name="components[]" class="form-check-input" value="S" id="component">
-            <label>M</label>
-            <input  type="checkbox" name="components[]" class="form-check-input" value="M" id="component">
-        </br>   
+      
+        <div class="form-check-inline checkbox checkbox-inline">
+          
+              <input  type="checkbox" name="components[]" class="form-check-input" value="V" id="component">
+              <label>V</label>
         </div>
-      </div>
+
+        <div class="form-check-inline checkbox checkbox-inline">
+            <input  type="checkbox" name="components[]" class="form-check-input" value="S" id="component">
+            <label>S</label>
+        </div>
+
+        <div class="form-check-inline checkbox checkbox-inline">
+            <input  type="checkbox" name="components[]" class="form-check-input" value="M" id="component">
+            <label>M</label>
+        </div>
+       
+        </div>
 </div> 
 
-<div class="form-group row">
     <fieldset class="form-group">
       <div class="col-sm-10">
 	  <label> <b>Non/Ritual</b> </label>
@@ -127,9 +134,9 @@ body {
       @endforeach
       </div>
   </fieldset>
-</div>
 
-<div class="form-group row">
+
+
     <fieldset class="form-group">
       <div class="col-sm-10">
 	  <label> <b>Non/Concentration</b> </label>
@@ -143,7 +150,7 @@ body {
       @endforeach
       </div>
   </fieldset>
-  </div>
+
   
     <div class="form-group row">
     
