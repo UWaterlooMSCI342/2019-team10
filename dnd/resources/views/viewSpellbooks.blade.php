@@ -83,7 +83,7 @@ function printPage (sURL) {
                 <th scope = "col">Class</th>
                 <th scope = "col">Component</th>
                 <th scope = "col">School</th>
-                <th scope = "col">Delete</th>
+                <th scope = "col">Remove</th>
             </tr>
         </thead>
 
@@ -97,7 +97,7 @@ function printPage (sURL) {
                 <td>{{$spell -> formattedClasses()}}</td>
                 <td>{{$spell -> components}}</td>
                 <td>{{$spell -> school}}</td>
-                <td><a href="{{url('api/spellbook/' . $selected_spellbook->spell_book_id . '/delete/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Delete</a></td>
+                <td><a href="{{url('api/spellbook/' . $selected_spellbook->spell_book_id . '/delete/spell/' . $spell -> spell_id)}}" class = "btn btn-primary">Remove</a></td>
             </tr>
             @endforeach
         </tbody>

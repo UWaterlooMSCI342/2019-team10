@@ -9,7 +9,9 @@
       </div>
       <div class="modal-body">	
         <label for = "dropdown">Select Existing Spellbook</label>
+        <small class="form-text text-muted" color=”red”>If None is selected, please create a new spellbook.</small>
         <select id = "dropdown" name = "spellbook" class = "browser-default custom-select custom-select-lg mb-3">
+            <option selected="selected" disabled='disabled' value = "None">---None---</option>
             @foreach($spellbooks as $spellbook)
             <option value = "{{$spellbook->spell_book_id}}">{{$spellbook->name}}</option>
             @endforeach
