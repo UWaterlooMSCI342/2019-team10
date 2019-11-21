@@ -25,6 +25,7 @@ class SpellBookController extends Controller
         $spells = [];
         $spellBooks = SpellBook::all();
         $spellBook = null;
+
         if ($id != null){
             $spellBook = SpellBook::find($id);
             if ($spellBook != null) {

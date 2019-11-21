@@ -50,29 +50,23 @@ function printPage (sURL) {
             <span class = "caret"></span></button>
            
             <a style="color: inherit;" href="{{url('api/spellbook/' . $selected_spellbook->spell_book_id . '/delete')}}"><button type="button" class="btn btn-danger" style="margin-left:8px;">Delete Spellbook</button></a>
-           
+		    <button style="margin-left:8px;" type="button" onclick="printPage('{{url('/api/spellbook/export/' . $selected_spellbook->spell_book_id)}}');" class="btn btn-primary">Export to Pdf </button>
         @else
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Spellbook
             <span class = "caret"></span></button>
         @endif
        
         <div aria-labelledby="dropdownMenuLink">
-        
-                <div class="dropdown-menu" >
-                
-        @foreach($spellbooks as $spellbook) 
-            <a class="dropdown-item" href="{{url('api/spellbooks/' . $spellbook->spell_book_id)}}"> {{$spellbook->name}}</a>
-          
-        @endforeach
+            <div class="dropdown-menu" >
+                @foreach($spellbooks as $spellbook) 
+                    <a class="dropdown-item" href="{{url('api/spellbooks/' . $spellbook->spell_book_id)}}"> {{$spellbook->name}}</a>
+                @endforeach
+            </div>
         </div>
-    </div>
     </div> 
-		<div class="btn-group">
-		<button onclick="printPage('{{url('/api/spellbook/export/' . $selected_spellbook->spell_book_id)}}');" class="btn btn-primary">Export to Pdf </button>
-		</div>
+		
 </div>
 <div>
-
 
 <div style="height:400px;overflow:auto;">
     <table class="table table-inverse table-dark">
