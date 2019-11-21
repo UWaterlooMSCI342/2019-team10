@@ -120,9 +120,9 @@ body {
        
         </div>
 </div> 
-
+<div class="form-group row">
     <fieldset class="form-group">
-      <div class="col-sm-10">
+      <div class="col-sm-12">
 	  <label> <b>Non/Ritual</b> </label>
         @foreach($rituals as $ritual)
         <div class="form-check">
@@ -134,26 +134,25 @@ body {
       @endforeach
       </div>
   </fieldset>
+</div>
 
-
-
+  <div class="form-group row">
     <fieldset class="form-group">
-      <div class="col-sm-10">
-	  <label> <b>Non/Concentration</b> </label>
-        @foreach($concentrations as $concentration)
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="concentration" id="select1" value="{{$concentration->concentration}}" checked >
-          <label class="form-check-label" for="gridRadios3">
-            {{$concentration->concentration}}
-          </label>
+      <div class="col-sm-12">
+      <label> <b>Non/Concentration</b> </label>
+          @foreach($concentrations as $concentration)
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="concentration" id="select1" value="{{$concentration->concentration}}" checked >
+            <label class="form-check-label" for="gridRadios3">
+              {{$concentration->concentration}}
+            </label>
+          </div>
+        @endforeach
         </div>
-      @endforeach
-      </div>
-  </fieldset>
-
+    </fieldset>
+  </div>
   
     <div class="form-group row">
-    
     <div class="col-sm-10">
     <label> <b>Select All Classes That Apply: (required)</b> </label>
     <br>@foreach ($classes as $class)
