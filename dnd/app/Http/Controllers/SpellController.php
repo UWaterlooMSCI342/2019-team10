@@ -76,10 +76,14 @@ class SpellController extends Controller
     }
 
     public function NewSave(Request $request){
+
         $class_names = $request->input('classes', null);
         if($class_names == null){
             return redirect(url("api/add/error"));
         }
+
+        
+        $components= $request->input('components');
 
         $spell = new Spell;
         $description = $request->input('description');
@@ -89,13 +93,14 @@ class SpellController extends Controller
         if($spell_name ==null){
             return redirect(url("api/add/error"));
         }
-        $spell->name=$request->input('spellname', $spell_name);
 
+        $spell->name=$request->input('spellname', $spell_name);
         $spell->level=$request->input('level'); 
         $spell->school=$request->input('type'); 
         $spell->casting_time=$request->input('castingtime'); 
-        
-        $spell->components=$request->input('components'); 
+       if ($components != null){
+             $spell->components= join(" ", $components);
+        }
         $spell->duration=$request->input('duration'); 
         $spell->range=$request->input('range'); 
         $spell->description=$description; 

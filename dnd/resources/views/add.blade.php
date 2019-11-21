@@ -69,24 +69,8 @@ body {
       <option value = "{{($school->school)}}">{{($school->school)}}</option>
       @endforeach
     </select>
-  </div>
+  </div>  
 
-  <div class="form-group">
-    <label><b>Components</b></label>
-      <select name = "components" class = "browser-default custom-select custom-select-lg mb-3">
-      <option value="V">V</option>
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="V S">V S</option>
-      <option value="V M">V M</option>
-      <option value="S M">S M</option>
-      <option value="V S M">V S M</option>
-      <!-- @foreach($components as $component) 
-      <option value = "{{($component->components)}}">{{($component->components)}}</option>
-      @endforeach -->
-    </select>
-  </div>
-    
   <div class="form-group">
 	<label> <b>Casting Time</b></label>
     <input type="castingtime" name="castingtime" class="form-control" id="castingtime" placeholder="Ex: {{$castingtime}}"maxlength="16"  >
@@ -110,10 +94,35 @@ body {
   <div class="form-group">
 	    <label> <b>Materials</b> </label>
       <input type="materials" name="materials" class="form-control" id="description" placeholder="Materials"maxlength="200"  > 
-    </div>
+  </div>
 
+  <div class="form-group row">
+  
+     <div class="col-sm-10">
+      <label> <b>Components</b> </label>
+       <br>
+      
+        <div class="form-check-inline checkbox checkbox-inline">
+          
+              <input  type="checkbox" name="components[]" class="form-check-input" value="V" id="component">
+              <label>V</label>
+        </div>
+
+        <div class="form-check-inline checkbox checkbox-inline">
+            <input  type="checkbox" name="components[]" class="form-check-input" value="S" id="component">
+            <label>S</label>
+        </div>
+
+        <div class="form-check-inline checkbox checkbox-inline">
+            <input  type="checkbox" name="components[]" class="form-check-input" value="M" id="component">
+            <label>M</label>
+        </div>
+       
+        </div>
+</div> 
+<div class="form-group row">
     <fieldset class="form-group">
-      <div class="col-sm-10">
+      <div class="col-sm-12">
 	  <label> <b>Non/Ritual</b> </label>
         @foreach($rituals as $ritual)
         <div class="form-check">
@@ -125,34 +134,36 @@ body {
       @endforeach
       </div>
   </fieldset>
-  
-    <fieldset class="form-group">
-      <div class="col-sm-10">
-	  <label> <b>Non/Concentration</b> </label>
-        @foreach($concentrations as $concentration)
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="concentration" id="select1" value="{{$concentration->concentration}}" checked >
-          <label class="form-check-label" for="gridRadios3">
-            {{$concentration->concentration}}
-          </label>
-        </div>
-      @endforeach
-      </div>
-  </fieldset>
-  
+</div>
+
   <div class="form-group row">
-	
+    <fieldset class="form-group">
+      <div class="col-sm-12">
+      <label> <b>Non/Concentration</b> </label>
+          @foreach($concentrations as $concentration)
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="concentration" id="select1" value="{{$concentration->concentration}}" checked >
+            <label class="form-check-label" for="gridRadios3">
+              {{$concentration->concentration}}
+            </label>
+          </div>
+        @endforeach
+        </div>
+    </fieldset>
+  </div>
+  
+    <div class="form-group row">
     <div class="col-sm-10">
-	<label> <b>Select All Classes That Apply: (required)</b> </label>
-	<br>@foreach ($classes as $class)
-	<label for="inlineCheckbox1"> {{$class->class_name}}  </label>
-	   <div class="form-check form-check-inline">
-                      <input  type="checkbox" name="classes[]" class="form-check-input" value="{{$class->class_id}}" id="class">
-     </div>
-     
-	   @endforeach
-  </div>
-  </div>
+    <label> <b>Select All Classes That Apply: (required)</b> </label>
+    <br>@foreach ($classes as $class)
+    <label for="inlineCheckbox1"> {{$class->class_name}}  </label>
+      <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="classes[]" class="form-check-input" value="{{$class->class_id}}" id="class">
+      </div>
+      
+      @endforeach
+    </div>
+    </div>
        
   <div class="form-group row">
     <div class="col-sm-10" align="center">
