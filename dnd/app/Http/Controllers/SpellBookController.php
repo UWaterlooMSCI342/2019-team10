@@ -42,12 +42,15 @@ class SpellBookController extends Controller
     }
 
     public function addSpells(Request $request) {
+
         $spellIds = $request->input("spells");
         $spells = Spell::query()->whereIn("spell_id", $spellIds)->get();
         $newSpellbookName = trim($request ->input("newSpellbookName"));
         if(empty($newSpellbookName)){
-            $spellBook = SpellBook::find($request->input("spellbook"));
-            SpellBook::addSpells($spells,$spellBook);
+            $spellBook = SpellBook::find($request->input("spellbook", null));
+            if ($spellBook != null) {
+                SpellBook::addSpells($spells,$spellBook);
+            }
         }else{
             SpellBook::addToNewOrExisting($newSpellbookName, $spells);
         }

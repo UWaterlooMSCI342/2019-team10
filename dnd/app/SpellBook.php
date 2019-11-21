@@ -22,6 +22,7 @@ class SpellBook extends DndModel
     {
         return $this->belongsToMany(Spell::class, "spell_books_spells", "spell_book_id", "spell_id");
     }
+    
     public static function addSpells($spells, $spellBook) {
         foreach($spells as $spell) {
             if(!$spellBook->spells->contains($spell->spell_id)){
