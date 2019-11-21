@@ -98,8 +98,9 @@ class SpellController extends Controller
         $spell->level=$request->input('level'); 
         $spell->school=$request->input('type'); 
         $spell->casting_time=$request->input('castingtime'); 
-        
-        $spell->components= join(" ", $components);
+       if ($components != null){
+             $spell->components= join(" ", $components);
+        }
         $spell->duration=$request->input('duration'); 
         $spell->range=$request->input('range'); 
         $spell->description=$description; 
