@@ -8,24 +8,24 @@
 3- Update your apt package manager using the following command 
 `sudo apt-get update`
 
-4 cd into apache serving folder `cd /var/www/html/` and run `sudo git clone https://github.com/UWaterlooMSCI342/2019-team10.git`
+4- cd into apache serving folder `cd /var/www/html/` and run `sudo git clone https://github.com/UWaterlooMSCI342/2019-team10.git`
 
-5 Install PHP and required packages using the following command 
+5- Install PHP and required packages using the following command 
 `sudo apt install php libapache2-mod-php php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-bcmath php-tokenizer php-json php-pear`
 
-6 Install the PHP mySQL drivers 
+6- Install the PHP mySQL drivers 
 `sudo apt-get install php-mysql`
 
-7 Run the `sudo bash database_deploy.sh (password)` bash script to initialize and setup mySQL database 
+7- Run the `sudo bash database_deploy.sh (password)` bash script to initialize and setup mySQL database 
 
-8 Run the command `sudo mysql -u root -p`, and when the interface opens, run the following commands in mySQL: 
+8- Run the command `sudo mysql -u root -p`, and when the interface opens, run the following commands in mySQL: 
 ```sql
 update mysql.user set authentication_string=password('password') where user='root';
 update mysql.user set plugin='mysql_native_password' where User='root';
 FLUSH PRIVILEGES;
 ```
 
-9 Create an environment .env file and add the following lines: 
+9- Create an environment .env file and add the following lines: 
  ```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -44,11 +44,11 @@ DB_PASSWORD= (ADD YOUR OWN PASSWORD)
  
   
 
-11 Give the proper permissions via the following commands:
+11- Give the proper permissions via the following commands:
   `sudo chgrp -R www-data /var/www/html/2019-team10/`
   `sudo chmod -R 775 /var/www/html/2019-team10/`
   
-12 Make the virutal host through the following steps: 
+12- Make the virutal host through the following steps: 
     `sudo vim/etc/apache2/sites-available/dnd.conf`
 
  ```xml
@@ -62,7 +62,7 @@ DB_PASSWORD= (ADD YOUR OWN PASSWORD)
      </VirtualHost>
 ```
 
-13-Run the following commands to enable your site
+13- Run the following commands to enable your site
 ```
     sudo a2dissite 000-default.conf
     sudo a2ensite dnd.conf
