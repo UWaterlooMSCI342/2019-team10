@@ -36,9 +36,12 @@ DB_PASSWORD= (ADD YOUR OWN PASSWORD)
 ```
 
 10- Go to home directory `cd /home`, and istall composer with the following command:
-  `curl -sS https://getcomposer.org/installer | php`
-  `sudo mv composer.phar /usr/local/bin/composer`
-  ` sudo chmod +x /usr/local/bin/composer`
+```
+   curl -sS https://getcomposer.org/installer | php
+   sudo mv composer.phar /usr/local/bin/composer
+   sudo chmod +x /usr/local/bin/composer
+``` 
+ 
   
 
 11 Give the proper permissions via the following commands:
