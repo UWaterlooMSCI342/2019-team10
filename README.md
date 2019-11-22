@@ -1,3 +1,5 @@
+# Deployment Instructions
+
 1- SSH onto your desired Ubuntu 18 VM 
 
 2- Install Apache using the following command
