@@ -60,12 +60,12 @@ DB_PASSWORD= (ADD YOUR OWN PASSWORD)
 ```
 
 13-Run the following commands to enable your site
-``3
+```
     sudo a2dissite 000-default.conf
     sudo a2ensite dnd.conf
     sudo a2enmod rewrite
     sudo systemctl restart apache2
-``
+```
 
 
 14- Go to your project directory `cd /var/www/html/2019-team10/dnd`, and run the following commands: 
